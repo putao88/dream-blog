@@ -1,8 +1,8 @@
 /*
  * @Author: houxiaoling 
  * @Date: 2020-05-08 16:00:43 
- * @Last Modified by:   houxiaoling 
- * @Last Modified time: 2020-05-08 16:00:43 
+ * @Last Modified by: houxiaoling
+ * @Last Modified time: 2020-05-08 16:19:32
  * @Description: 留言板组件
  */
 
@@ -20,7 +20,7 @@ export default class Message extends Component {
     render () {
         return (
             <div>
-                <h1>Message</h1>
+                <h1>留言板组件</h1>
             </div>
         )
     }

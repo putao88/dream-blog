@@ -1,9 +1,3 @@
-.content {
-    padding: 100px 0 160px 0;
-}
-.content .cont .title {
-    margin-bottom: 60px;
-}
 .content .cont .title a.active, .content .cont .title a:hover {
     color: #ff7f21!important;
 }
