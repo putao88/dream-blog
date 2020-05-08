@@ -2,7 +2,7 @@
  * @Author: houxiaoling 
  * @Date: 2020-05-08 16:00:43 
  * @Last Modified by: houxiaoling
- * @Last Modified time: 2020-05-08 16:17:17
+ * @Last Modified time: 2020-05-08 16:30:11
  * @Description: 留言板组件
  */
 
@@ -19,8 +19,10 @@ export default class About extends Component {
     }
     render () {
         return (
-            <div>
-                <h1>关于组件</h1>
+            <div className='content'>
+                <div className='cont w1000'>
+                    <h1>关于组件</h1>
+                </div>
             </div>
         )
     }

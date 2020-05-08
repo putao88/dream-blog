@@ -2,7 +2,7 @@
  * @Author: houxiaoling 
  * @Date: 2020-05-08 15:30:46 
  * @Last Modified by: houxiaoling
- * @Last Modified time: 2020-05-08 16:16:47
+ * @Last Modified time: 2020-05-08 16:27:22
  * @Description: 中间内容组件
  */
 
@@ -27,17 +27,13 @@ export default class Content extends Component {
     }
     render () {
         return (
-            <div className='content'>
-                <div className='cont w1000'>
-                    <Router>
-                        <Route exact path="/" component={Article} />
-                        <Route exact path="/article/*" component={Article} />
-                        <Route exact path="/message/*" component={Message} />
-                        <Route exact path="/photo/*" component={Photo} />
-                        <Route exact path="/about/*" component={About} />
-                    </Router>
-                </div>
-            </div>
+            <Router>
+                <Route exact path="/" component={Article} />
+                <Route exact path="/article/*" component={Article} />
+                <Route exact path="/message/*" component={Message} />
+                <Route exact path="/photo/*" component={Photo} />
+                <Route exact path="/about/*" component={About} />
+            </Router>
         )
     }
 
