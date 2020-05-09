@@ -2,7 +2,7 @@
  * @Author: houxiaoling 
  * @Date: 2020-05-08 11:15:42 
  * @Last Modified by: mikey.zhaopeng
- * @Last Modified time: 2020-05-09 14:06:42
+ * @Last Modified time: 2020-05-09 16:37:59
  */
 
 import React from 'react';
@@ -24,7 +24,7 @@ class App extends React.Component {
     }
     render () {
         return (
-            <div className="App" style={{backgroundImage: "url(https://yssimage.oss-cn-hangzhou.aliyuncs.com/bg9.jpg)" }}>
+            <div className="App">
               <HomeBody></HomeBody>
               <NavigationBar></NavigationBar>
             </div>
