@@ -1,8 +1,8 @@
 /*
  * @Author: houxiaoling 
  * @Date: 2020-05-08 11:15:42 
- * @Last Modified by: houxiaoling
- * @Last Modified time: 2020-05-08 16:26:50
+ * @Last Modified by: mikey.zhaopeng
+ * @Last Modified time: 2020-05-09 14:06:42
  */
 
 import React from 'react';
@@ -13,6 +13,8 @@ import * as serviceWorker from './serviceWorker';
 import Header from './component/header/index'
 import Content from './component/content/index'
 import Footer from './component/footer/index'
+import NavigationBar from './Components/NavigationBar/index'
+import HomeBody from './Main/Home/homeBody'
 
 
 class App extends React.Component {
@@ -22,11 +24,10 @@ class App extends React.Component {
     }
     render () {
         return (
-            <div className="App">
-                <Header />
-                <Content />
-                <Footer />
-          </div>
+            <div className="App" style={{backgroundImage: "url(https://yssimage.oss-cn-hangzhou.aliyuncs.com/bg9.jpg)" }}>
+              <HomeBody></HomeBody>
+              <NavigationBar></NavigationBar>
+            </div>
         )
     }
 }

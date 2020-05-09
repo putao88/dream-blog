@@ -10,9 +10,20 @@ class NavigationBar extends React.Component {
     }
 
     render() {
-        return  <div className="nav">
-                    <div>11111111111111111111111</div>
+        return (
+            <div className="package">
+                <div className="box effect7">
+                    <div className="popup">1</div>
+                    <div className="popup">2</div>
+                    <div className="popup">3</div>
+                    <div className="popup">4</div>
+                    <div className="popup">5</div>
+                    <div className="popup">6</div>
+                    <div className="popup">7</div>
+                    <div className="popup">8</div>
                 </div>
+            </div>
+        )
     }
 }
 
