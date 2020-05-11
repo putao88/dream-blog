@@ -1,0 +1,42 @@
+.blog-acticle {
+    margin: 50px;
+    width: 60%;
+    height: 320px;
+    padding: 10px;
+    box-sizing: border-box;
+    box-shadow: 0px 20px 10px 0px rgba(0,0,0,0.5);
+    position: relative;
+}
+.blog-acticle::after {
+    content:"";
+    /* background-image:url('../../Image/flowers.png'); */
+    opacity:0.5;
+    top:0;
+    left:0;
+    bottom:0;
+    right:0;
+    position:absolute;
+    z-index:-1;
+}
+.acticle-top {
+    display: flex;
+    height: 252px;
+    margin-bottom: 8px;
+}
+.acticle-top div:nth-child(1) {
+    width: 40%;
+}
+.acticle-top div:nth-child(1) img {
+    width: 100%;
+    height: 100%;
+    border-radius: 4px;
+}
+.acticle-top div:nth-child(2) {
+    width: 60%;
+    margin-left: 20px;
+}
+.acticle-bottom{
+    height: 39px;
+    border-top: 1px solid #999999;
+}
+

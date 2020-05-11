@@ -2,7 +2,7 @@
  * @Author: houxiaoling 
  * @Date: 2020-05-08 16:00:43 
  * @Last Modified by: houxiaoling
- * @Last Modified time: 2020-05-08 16:30:11
+ * @Last Modified time: 2020-05-11 17:19:36
  * @Description: 留言板组件
  */
 
@@ -10,7 +10,6 @@
 import React , { Component } from 'react';
 
 import './index.css'
-
 
 export default class About extends Component {
     constructor(props) {
