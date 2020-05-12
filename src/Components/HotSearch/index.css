@@ -1,0 +1,41 @@
+.hotContainer {
+    width: 20%;
+    margin: 40px;
+    border: 1px solid #999999;
+    box-sizing: border-box;
+    padding: 1em;
+    min-height: 150px;
+}
+.hotTop i {
+    margin-right: .4em;
+    color: #CC0033;
+}
+.hotTop span {
+    font-family: '楷体';
+}
+.line {
+    border: 1px solid #666666;
+    height: 1px;
+    width: 100%;
+    margin: 1em 0;
+}
+.hotBottom li{
+    list-style: none;
+    font-family: '楷体';
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    margin: .5em 0;
+}
+.hotBottom li:nth-child(1){
+    margin: 1em 0;
+    font-size: 1.3em;
+}
+.hotBottom li:nth-child(2){
+    margin: .8em 0;
+    font-size: 1.2em;
+}
+.hotBottom li:nth-child(3){
+    margin: .6em 0;
+    font-size: 1.1em;
+}
