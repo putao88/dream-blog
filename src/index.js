@@ -2,7 +2,7 @@
  * @Author: houxiaoling 
  * @Date: 2020-05-08 11:15:42 
  * @Last Modified by: Litao
- * @Last Modified time: 2020-05-12 15:23:06
+ * @Last Modified time: 2020-05-13 18:06:07
  */
 
 
@@ -20,6 +20,8 @@ import Search from './Components/Search'
 import Article from './Components/Article'
 import ArticleTags from './Components/ArticleTags'
 import HotSearch from './Components/HotSearch'
+import GoTop from './Components/GoTop'
+import Tooltip from './Components/Tooltip'
 
 
 class App extends React.Component {
@@ -54,7 +56,12 @@ class App extends React.Component {
               /> */}
               {/* <ArticleTags 
               /> */}
-              <HotSearch/>
+              {/* <HotSearch/> */}
+              {/* <GoTop/> */}
+              <Tooltip type={'toolTip-top'} txt={'hellohellohelloahellohellohelloahellohellohelloa'}><div  style={{width:'500px', margin: '20px'}}>12345sadsadasd</div></Tooltip>
+              {/* <Tooltip type={'toolTip-bottoom'} txt={'hellohellohelloa'}/>
+              <Tooltip type={'toolTip-left'} txt={'hellohellohelloa'}/>
+              <Tooltip type={'toolTip-right'} txt={'hellohelloahellohellohelloahellohelloaheahellohellohelloahellohelloaheahellohellohelloahellohelloahellohellohelloa'}/> */}
             </div>
         )
     }

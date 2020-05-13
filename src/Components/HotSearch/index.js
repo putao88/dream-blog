@@ -2,7 +2,8 @@
  * @Author: Litao 
  * @Date: 2020-05-12 15:18:31 
  * @Last Modified by: Litao
- * @Last Modified time: 2020-05-12 18:15:01
+ * @Last Modified time: 2020-05-13 10:09:43
+ * @descript  热搜组件
  */
 
 import React from 'react'
@@ -25,6 +26,10 @@ export default class HotSearch extends React.Component {
                 { id: 9, txt: '秋风起兮白云飞，草木黄落兮雁南归', color: '#3467F8' },
             ]
         }
+    }
+
+    goDetail = (e) => {
+        console.log(e.target.innerText)
     }
 
     render() {
@@ -52,7 +57,7 @@ export default class HotSearch extends React.Component {
                 </div>
                 <p className="line"></p>
                 <div className='hotBottom' onClick={this.getTags}>
-                    <ul>
+                    <ul onClick={this.goDetail}>
                         {li}
                     </ul>
                 </div>

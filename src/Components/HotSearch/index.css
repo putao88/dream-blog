@@ -26,13 +26,17 @@
     white-space: nowrap;
     overflow: hidden;
     margin: .5em 0;
+    cursor: pointer;
+}
+.hotBottom li:hover{
+    color: red;
 }
 .hotBottom li:nth-child(1){
-    margin: 1em 0;
-    font-size: 1.3em;
+    margin: .9em 0;
+    font-size: 1.25em;
 }
 .hotBottom li:nth-child(2){
-    margin: .8em 0;
+    margin: .75em 0;
     font-size: 1.2em;
 }
 .hotBottom li:nth-child(3){
