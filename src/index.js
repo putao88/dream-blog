@@ -1,73 +1,39 @@
 /*
  * @Author: houxiaoling 
  * @Date: 2020-05-08 11:15:42 
- * @Last Modified by: Litao
- * @Last Modified time: 2020-06-29 18:09:24
+ * @Last Modified by: houxiaoling
+ * @Last Modified time: 2020-07-31 17:10:38
  */
 
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-// import { BrowserRouter } from 'react-router-dom'
+import { Route, Redirect, Switch, HashRouter } from 'react-router-dom'
 import './index.css'
 import './reset.css' //重置样式
 import * as serviceWorker from './serviceWorker'
-import App from './App'
-// import Header from './component/header/index'
-// import Content from './component/content/index'
-// import Footer from './component/footer/index'
-import NavigationBar from './Components/NavigationBar/index'
-import HomeBody from './Main/Home/homeBody'
-import Search from './Components/Search'
-import Article from './Components/Article'
-import ArticleTags from './Components/ArticleTags'
-import HotSearch from './Components/HotSearch'
-import GoTop from './Components/GoTop'
-import Tooltip from './Components/Tooltip'
+import Home from './Pages/Home'
+import User from './Pages/user'
 
 
-// class App extends React.Component {
-//   constructor(props) {
-//     super(props)
-//     this.state = {}
-//   }
 
-//   b(e) {
-//     console.log(e)
-//   }
-//   c(e) {
-//     console.log(e)
-//   }
-//   goArticle(e) {
-//     console.log(e)
-//   }
 
-//   render() {
-//     let p = '去年今日此门中，人面桃花相映红'
-//     return (
-//       <div className="App">
-//         {/* <HomeBody></HomeBody> 
-//               <NavigationBar></NavigationBar> */}
-//         {/* <Search
-//                 search={this.b}
-//                 // focus={this.c}
-//                 placeholder={p}
-//               /> */}
-//         {/* <Article
-//                 goArticle={this.goArticle}
-//               /> */}
-//         {/* <ArticleTags 
-//               /> */}
-//         {/* <HotSearch/> */}
-//         {/* <GoTop/> */}
-//         {/* <Tooltip type={'toolTip-right'} txt={'hellohellohelloahellohellohelloahellohellohelloa'}><div  style={{width:'500px', margin: '20px'}}>12345sadsadasd</div></Tooltip> */}
-//         {/* <Tooltip type={'toolTip-bottoom'} txt={'hellohellohelloa'}/>
-//               <Tooltip type={'toolTip-left'} txt={'hellohellohelloa'}/>
-//               <Tooltip type={'toolTip-right'} txt={'hellohelloahellohellohelloahellohelloaheahellohellohelloahellohelloaheahellohellohelloahellohelloahellohellohelloa'}/> */}
-//       </div>
-//     )
-//   }
-// }
+
+class App extends React.Component {
+    render() {
+      return (
+        <HashRouter>
+          <div className="App">
+            <Switch>
+              <Route path="/home" exact component={Home}></Route>
+              <Route path="/user" exact component={User}></Route>
+              <Redirect path="/" to='/home'></Redirect>
+            </Switch>
+          </div>
+        </HashRouter>
+      )
+    }
+}
 
 ReactDOM.render(
   <React.StrictMode>

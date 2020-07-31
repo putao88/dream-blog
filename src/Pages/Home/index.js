@@ -2,7 +2,7 @@
  * @Author: Litao 
  * @Date: 2020-05-11 17:24:01 
  * @Last Modified by: Litao
- * @Last Modified time: 2020-06-29 17:32:10
+ * @Last Modified time: 2020-07-31 11:27:46
  */
 import React from 'react'
 
@@ -19,7 +19,7 @@ export default class Home extends React.Component {
         return (
             <div>
                 <HomeHeader/>
-                <HomeBody/>
+                {/* <HomeBody/> */}
             </div>
         )
     }
