@@ -1,0 +1,126 @@
+.layui-btn, .layui-input, .layui-select, .layui-textarea, .layui-upload-button {
+    outline: 0;
+    -webkit-appearance: none;
+    transition: all .3s;
+    -webkit-transition: all .3s;
+    box-sizing: border-box;
+}
+.layui-btn {
+    display: inline-block;
+    height: 38px;
+    line-height: 38px;
+    padding: 0 18px;
+    background-color: #009688;
+    color: #fff;
+    white-space: nowrap;
+    text-align: center;
+    font-size: 14px;
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+}
+.layui-btn-danger {
+    background-color: #FF5722;
+}
+.layui-row:after, .layui-row:before {
+    content: '';
+    display: block;
+    clear: both;
+}
+.layui-row:after, .layui-row:before {
+    content: '';
+    display: block;
+    clear: both;
+}
+.w1000 {
+    max-width: 1000px!important;
+    margin: 0 auto;
+}
+
+.layui-breadcrumb {
+    visibility: hidden;
+    font-size: 0;
+}
+.layui-breadcrumb>* {
+    font-size: 14px;
+}
+.layui-breadcrumb a {
+    color: #999!important;
+}
+.layui-col-xs12 {
+    width: 100%;
+    float: left;
+}
+.layui-col-md5, .layui-col-sm4, .layui-col-md5 {
+    position: relative;
+    display: block;
+    box-sizing: border-box;
+}
+@media screen and (min-width: 768px) {
+    .layui-col-sm4 {
+        width: 33.33333333%;
+        float: left;
+    }
+    .layui-col-sm8 {
+        width: 66.66666667%;
+        float: left;
+    }
+}
+@media screen and (min-width: 992px){
+    .layui-col-md5 {
+        width: 41.66666667%;
+        float: left;
+    }
+    .layui-col-md7 {
+        width: 58.33333333%;
+        float: left;
+    }
+}
+
+/* 分页 */
+.layui-box, .layui-box * {
+    box-sizing: content-box;
+}
+.layui-laypage {
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+    vertical-align: middle;
+    margin: 10px 0;
+    font-size: 0;
+}
+.layui-laypage a, .layui-laypage button, .layui-laypage input, .layui-laypage select, .layui-laypage span {
+    border: 1px solid #e2e2e2;
+}
+.layui-laypage a, .layui-laypage span {
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+    vertical-align: middle;
+    padding: 0 15px;
+    height: 28px;
+    line-height: 28px;
+    margin: 0 -1px 5px 0;
+    background-color: #fff;
+    color: #333;
+    font-size: 12px;
+}
+.layui-laypage a {
+    text-decoration: none;
+}
+.layui-laypage>:first-child {
+    margin-left: 0!important;
+}
+.layui-laypage>a:first-child, .layui-laypage>a:first-child em {
+    border-radius: 2px 0 0 2px;
+}
+.layui-laypage .layui-laypage-curr {
+    position: relative;
+}
+.layui-laypage .layui-laypage-spr {
+    color: #999;
+    font-weight: 700;
+}
+.layui-laypage>a:last-child, .layui-laypage>a:last-child em {
+    border-radius: 0 2px 2px 0;
+}

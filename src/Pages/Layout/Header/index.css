@@ -1,0 +1,25 @@
+.header {
+    height: 120px;
+    line-height: 120px;
+    position: relative;
+    font-size: 16px;
+}
+.header .logo {
+    position: absolute;
+    top: 0;
+    left: 65px;
+}
+.header .nav {
+    position: absolute;
+    top: 0;
+    left: 250px;
+}
+.header .nav a {
+    color: #3f2863;
+    margin: 0 40px;
+}
+.header .welcome-text {
+    position: absolute;
+    top: 0;
+    right: 50px;
+}

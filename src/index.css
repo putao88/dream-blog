@@ -7,21 +7,6 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-/* 背景样式 */
-.background-wrap {
-    width: 100%;
-    height: 100%;
-}
-.background-wrap > img{
-    width: 100%;
-}
-.content {
-    padding: 100px 0 160px 0;
-}
-.content .cont .title {
-    margin-bottom: 60px;
-}
-
 html {
     font-size: 16px;
 }
@@ -30,7 +15,7 @@ html {
 ::-webkit-scrollbar {
     width: 10px;
     height: 4px;
-background-color: #F5F5F5;
+    background-color: #F5F5F5;
 }
 /*定义滚动条轨道 内阴影+圆角*/
 ::-webkit-scrollbar-track {
@@ -41,12 +26,12 @@ background-color: #F5F5F5;
 ::-webkit-scrollbar-thumb {
     border-radius: 3px;
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
-    background-color:rgba(7, 170, 247, 0.7);
+    background-color:rgba(176, 162, 224, 0.7);
 }
 ::-webkit-scrollbar-thumb:hover {
     border-radius: 3px;
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
-    background-color:rgba(7, 170, 247, 1);
+    background-color:rgba(176, 162, 224, 0.7);
 }
 
 
@@ -80,5 +65,10 @@ background-color: #F5F5F5;
         font-size: 16px !important;
     }
 }
-
+.APP {
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
 

@@ -2,7 +2,7 @@
  * @Author: houxiaoling 
  * @Date: 2020-07-31 14:41:48 
  * @Last Modified by: houxiaoling
- * @Last Modified time: 2020-07-31 17:52:15
+ * @Last Modified time: 2020-08-03 11:05:35
  */
 import axios from 'axios'; // 引入axios库
 
@@ -18,7 +18,7 @@ const exp = {
             headers: {'Content-Type': 'application/json;charset=utf-8', 'token': '12ssDDdd'}
         })
             .then(function (response) {
-                reback(response)
+                reback(response.data)
             })
             .catch(function (error) {
                 console.log(error);
@@ -36,7 +36,7 @@ const exp = {
             headers: {'Content-Type': 'application/json;charset=utf-8'},
         })
             .then(function (response) {
-                reback(response)
+                reback(response.data)
             })
             .catch(function (error) {
                 console.log(error);
