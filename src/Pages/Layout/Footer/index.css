@@ -33,3 +33,6 @@
 .footer .practice-mode .text p {
     line-height: 32px;
 }
+.footer .practice-mode .text p span {
+    padding-left: 24px;
+}

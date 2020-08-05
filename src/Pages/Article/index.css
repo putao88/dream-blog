@@ -13,10 +13,12 @@
     left: 0;
 }
 .banner .title h3 {
+    color: #fff;
     font-size: 80px;
     line-height: 88px;
 }
 .banner .title h4 {
+    color: #fff;
     font-size: 46px;
 }
 
@@ -46,18 +48,12 @@
 .content .cont .title {
     margin-bottom: 60px;
 }
-.layui-breadcrumb {
-    font-size: 0;
-}
 .content .cont .title a.active, .content .cont .title a:hover {
     color: #ff7f21!important;
 }
 .content .cont .title a {
     font-size: 16px;
     color: #000!important;
-}
-.layui-breadcrumb a {
-    color: #999!important;
 }
 .content .cont .title .layui-breadcrumb span {
     position: relative;
@@ -70,14 +66,7 @@
     margin-bottom: 80px;
     overflow: hidden;
 }
-.content .cont .list-item .layui-fluid {
-    padding: 0;
-}
-.layui-row:before {
-    content: '';
-    display: block;
-    clear: both;
-}
+
 .content .cont .list-item .item .item-cont {
     padding-left: 100px;
 }

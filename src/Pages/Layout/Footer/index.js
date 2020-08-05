@@ -2,7 +2,7 @@
  * @Author: houxiaoling 
  * @Date: 2020-08-03 17:31:44 
  * @Last Modified by: houxiaoling
- * @Last Modified time: 2020-08-04 15:05:18
+ * @Last Modified time: 2020-08-05 15:50:12
  * 公共底部
  */
 
@@ -20,7 +20,7 @@ export default class Footer extends Component {
             <div className='footer-wrap'>
                 <div className='footer w1000'>
                     <div className='qrcode'>
-                        <img src='assets/img/wchat.jpg' />
+                        <img src='assets/img/wchat.png' />
                     </div>
                     <div className='practice-mode'>
                         <img src='assets/img/down_img.jpg' />

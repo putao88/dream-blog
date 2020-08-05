@@ -2,25 +2,64 @@
  * @Author: houxiaoling 
  * @Date: 2020-07-31 17:03:24 
  * @Last Modified by: houxiaoling
- * @Last Modified time: 2020-08-04 17:10:59
+ * @Last Modified time: 2020-08-05 16:00:24
  */
 import React, { Component } from 'react'
+import { Tabs, Row, Col, Pagination, Empty  } from 'antd';
 import { api } from '../../models/api'
 import './index.css'
+
+const { TabPane } = Tabs;
 
 export default class Article extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            userList:[]
+            articleList:[],
+            articleType:'前端文章',
+            currentPage:1,
+            pageSize:5,
+            total:0,
         }
     }
 
     componentDidMount() {
+        this.getArticleByType()
+    }
+
+    /* 根据类型搜索文章 */
+    getArticleByType = () => {
+        const { articleType } = this.state
+        api.getArticleByType({info:JSON.stringify( { type:articleType} )}, res => {
+            if (res.code === 200) {
+                this.setState({
+                    articleList: res.data,
+                    total: res.data.length,
+                })
+            }
+        })
+    }
+
+    /* 文章类型切换 */
+    tabChange = (type) => {
+        this.setState({
+            articleType: type,
+            currentPage: 1,
+        }, () => {
+            this.getArticleByType()
+        })
+    }
+
+    paginationChange = ( page,pageSize ) => {
+        this.setState({
+            currentPage: page
+        })
     }
 
     render () {
-        const { userList } = this.state
+        const { articleList, currentPage, pageSize, total } = this.state
+        //文章分页后的内容
+        const articles = articleList.slice((currentPage-1)*pageSize,(currentPage-1)*pageSize+pageSize)
         return (
             <div>
                 <div className='banner' style={{background:'url("assets/img/banner.jpg") no-repeat'}}>
@@ -44,51 +83,48 @@ export default class Article extends Component {
                 <div className='content'>
                     <div className='cont w1000'>
                         <div className='title'>
-                            <span className='layui-breadcrumb' style={{visibility:'visible'}}>
-                                <a href="#" className="active">设计文章</a>
-                                <span lay-separator="">|</span>
-                                <a href="#">前端文章</a>
-                                <span lay-separator="">|</span>
-                                <a href="#">旅游杂记</a>
-                            </span>
+                        <Tabs defaultActiveKey="前端文章" onChange={this.tabChange}>
+                            <TabPane tab="前端文章" key="前端文章" />
+                            <TabPane tab="心情随笔" key="心情随笔" />
+                            <TabPane tab="其他文章" key="其他文章" />
+                        </Tabs>
                         </div>
                         <div className='list-item'>
-                            <div className='item'>
-                                <div className='layui-fluid'>
-                                    <div className='layui-row'>
-                                        <div className='layui-col-xs12 layui-col-sm4 layui-col-md5'>
-                                            <div className='img'>
-                                                <img src='assets/img/sy_img1.jpg' />
+                            {
+                                articles.length ?
+                                    articles.map( article => {
+                                        return (
+                                            <div className='item' key={article.id}>
+                                                <Row gutter={20}>
+                                                    <Col span={10}>
+                                                        <div className='img'>
+                                                                <img src='assets/img/sy_img1.jpg' />
+                                                        </div>
+                                                    </Col>
+                                                    <Col span={14}>
+                                                        <div className='item-cont'>
+                                                            <h3>
+                                                                {article.title}
+                                                                <button className='layui-btn layui-btn-danger new-icon'>new</button>
+                                                            </h3>
+                                                            <h5>{article.type}</h5>
+                                                            <p>{article.content}</p>
+                                                            <a href='#' className='go-icon' style={{background:'url("assets/img/jiantou.png") center center no-repeat'}}></a>
+                                                        </div>
+                                                    </Col>
+                                                </Row>
                                             </div>
-                                        </div>
-                                        <div className='layui-col-xs12 layui-col-sm8 layui-col-md7'>
-                                            <div className='item-cont'>
-                                                <h3>
-                                                    空间立体效果图，完美呈现最终效果
-                                                    <button className='layui-btn layui-btn-danger new-icon'>new</button>
-                                                </h3>
-                                                <h5>设计文章</h5>
-                                                <p>室内设计作为一门新兴的学科，尽管还只是近数十年的事，但是人们有意识地对自己生活、生产活动的室内进行安排布置，甚至美化装饰，赋予室内环境以所祈使的气氛，却早巳从人类文明伊始的时期就已存在</p>
-                                                <a href='#' className='go-icon' style={{background:'url("assets/img/jiantou.png") center center no-repeat'}}></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                                        )
+                                    })
+                                    :
+                                    <Empty /> 
+                            }
                         </div>
                         {/* 分页 */}
                         <div style={{textAlign:'center'}}>
-                            <div className='layui-box layui-laypage layui-laypage-default'>
-                                <a className='layui-laypage-prev'>上一页</a>
-                                <a href='#'>1</a>
-                                <a href='#'>2</a>
-                                <a href='#'>3</a>
-                                <a href='#'>4</a>
-                                <a href='#'>5</a>
-                                <a href='#' className='layui-laypage-spr'>...</a>
-                                <a href='#'>7</a>
-                                <a href='#' className='layui-laypage-next'>下一页</a>
-                            </div>
+                            <Pagination current={currentPage} defaultPageSize={pageSize} total={total}
+                                onChange = {this.paginationChange}
+                            />
                         </div>
                     </div>
                 </div>

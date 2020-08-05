@@ -1,5 +1,7 @@
+@import '~antd/dist/antd.css';
+
 body {
-    font: 16px 宋体 Helvetica Neue,Helvetica,PingFang SC,Tahoma,Arial,sans-serif;
+    font: 14px 宋体 Helvetica Neue,Helvetica,PingFang SC,Tahoma,Arial,sans-serif;
     overflow-x: hidden;
 }
 
