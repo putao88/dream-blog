@@ -2,7 +2,7 @@
  * @Author: houxiaoling 
  * @Date: 2020-07-31 11:55:39 
  * @Last Modified by: houxiaoling
- * @Last Modified time: 2020-08-05 17:52:38
+ * @Last Modified time: 2020-08-06 11:46:55
  */
 import exp from './exp'
 let { AxiosGet, AxiosPost } = exp
@@ -35,6 +35,16 @@ let api = {
     },
     getAllWhisper: ( data,callback ) => {
         let uri = url + '/whispers/queryAll'
+		AxiosGet({
+			url: uri,
+			data: data,
+			reback: (res) => {
+				callback(res)
+			}
+		})
+    },
+    getAllLeacots: ( data,callback ) => {
+        let uri = url + '/leacots/queryAll'
 		AxiosGet({
 			url: uri,
 			data: data,

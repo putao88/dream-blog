@@ -1,0 +1,105 @@
+.banner {
+    height: 600px;
+    width: 100%;
+    background-size: cover;
+}
+.banner .cont {
+    position: relative;
+}
+.banner .title {
+    color: #fff;
+    position: absolute;
+    top: 152px;
+    left: 0;
+}
+.banner .title h3 {
+    color: #fff;
+    font-size: 80px;
+    line-height: 88px;
+}
+.banner .title h4 {
+    color: #fff;
+    font-size: 46px;
+}
+
+.banner .amount {
+    font-size: 18px;
+    line-height: 50px;
+    color: #ff7f21;
+    position: absolute;
+    right: 20px;
+    top: 290px;
+}
+.banner .text {
+    position: relative;
+    width: 80px;
+    display: inline-block;
+}
+.banner .text::before {
+    position: absolute;
+    right: -5px;
+    content: '\FF1A';
+}
+
+/* 文章内容 */
+.content {
+    padding: 100px 0 160px 0;
+}
+.content .cont .title {
+    margin-bottom: 60px;
+}
+.content .cont .title a.active, .content .cont .title a:hover {
+    color: #ff7f21!important;
+}
+.content .cont .title a {
+    font-size: 16px;
+    color: #000!important;
+}
+.content .cont .title .layui-breadcrumb span {
+    position: relative;
+    top: -1px;
+    margin: 0 16px;
+    color: #999;
+}
+/* 列表 */
+.content .cont .list-item .item {
+    margin-bottom: 80px;
+    overflow: hidden;
+}
+
+.content .cont .list-item .item .item-cont {
+    padding-left: 100px;
+}
+.content .cont .list-item .item .item-cont h3 {
+    font-size: 24px;
+    margin: 20px 0;
+}
+.content .cont .list-item .item .item-cont h3 .new-icon {
+    width: 36px;
+    height: 18px;
+    line-height: 18px;
+    text-align: center;
+    padding: 0;
+    margin: -3px 0 0 10px;
+}
+
+.content .cont .list-item .item .item-cont h5 {
+    font-size: 12px;
+    color: #ff7f21;
+    margin-bottom: 32px;
+}
+.content .cont .list-item .item .item-cont p {
+    line-height: 37px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+}
+.content .cont .list-item .item .item-cont .go-icon {
+    width: 33px;
+    height: 11px;
+    display: block;
+    padding: 10px 0;
+    margin-top: 16px;
+}

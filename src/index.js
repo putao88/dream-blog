@@ -2,7 +2,7 @@
  * @Author: houxiaoling 
  * @Date: 2020-05-08 11:15:42 
  * @Last Modified by: houxiaoling
- * @Last Modified time: 2020-08-04 16:58:15
+ * @Last Modified time: 2020-08-06 16:54:02
  */
 
 
@@ -38,9 +38,9 @@ class App extends React.Component {
 }
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+//   <React.StrictMode>
+    <App />,
+//   </React.StrictMode>,
   document.getElementById('root')
 );
 serviceWorker.unregister();

@@ -1,3 +1,9 @@
+
+.w1000 {
+    max-width: 1000px!important;
+    margin: 0 auto;
+}
+/* form样式 */
 .layui-btn, .layui-input, .layui-select, .layui-textarea, .layui-upload-button {
     outline: 0;
     -webkit-appearance: none;
@@ -19,60 +25,6 @@
     border-radius: 2px;
     cursor: pointer;
 }
-.layui-btn-danger {
-    background-color: #FF5722;
-}
-.layui-row:after, .layui-row:before {
-    content: '';
-    display: block;
-    clear: both;
-}
-.layui-row:after, .layui-row:before {
-    content: '';
-    display: block;
-    clear: both;
-}
-.w1000 {
-    max-width: 1000px!important;
-    margin: 0 auto;
-}
 
-.layui-breadcrumb {
-    visibility: hidden;
-    font-size: 0;
-}
-.layui-breadcrumb>* {
-    font-size: 14px;
-}
-.layui-breadcrumb a {
-    color: #999!important;
-}
-.layui-col-xs12 {
-    width: 100%;
-    float: left;
-}
-.layui-col-md5, .layui-col-sm4, .layui-col-md5 {
-    position: relative;
-    display: block;
-    box-sizing: border-box;
-}
-@media screen and (min-width: 768px) {
-    .layui-col-sm4 {
-        width: 33.33333333%;
-        float: left;
-    }
-    .layui-col-sm8 {
-        width: 66.66666667%;
-        float: left;
-    }
-}
-@media screen and (min-width: 992px){
-    .layui-col-md5 {
-        width: 41.66666667%;
-        float: left;
-    }
-    .layui-col-md7 {
-        width: 58.33333333%;
-        float: left;
-    }
-}
+
+

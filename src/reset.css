@@ -2,7 +2,7 @@
  * @Author: houxiaoling 
  * @Date: 2020-05-08 14:15:17 
  * @Last Modified by: houxiaoling
- * @Last Modified time: 2020-08-05 15:43:19
+ * @Last Modified time: 2020-08-06 10:56:25
  * @Description: 公共样式清除
  */
 
@@ -72,4 +72,22 @@ img {
 .ant-pagination-next:hover .ant-pagination-item-link {
     color: #009688;
     border-color: #009688;
+}
+
+/* 按钮样式 */
+.ant-btn-primary {
+    width: 100px;
+    height: 40px;
+    color: #fff;
+    background: #ff7f21;
+    border-color: #ff7f21;
+}
+.ant-btn-primary:active, .ant-btn-primary:hover, .ant-btn-primary:focus {
+    color: #fff;
+    background:rgba( 255,127,33,0.8);
+    border-color: rgba( 255,127,33,0.8);
+}
+
+textarea.ant-input:hover, textarea.ant-input:focus {
+    border: 1px solid #402760;
 }

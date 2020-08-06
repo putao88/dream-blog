@@ -12,10 +12,6 @@
 .whisper-content .cont .item-box .item {
     padding: 50px 46px 20px 54px;
 }
-.content .review-version {
-    padding: 20px;
-    border-top: 1px dashed #dddddd;
-}
 .whisper-content .cont .whisper-list .whisper-title {
     height: 20px;
     line-height: 20px;
@@ -66,4 +62,32 @@
 }
 .whisper-content .whisper-list .op-list p.off span {
     margin-right: 5px;
+}
+
+/* 留言板部分 */
+.content .review-version {
+    padding: 20px;
+    border-top: 1px dashed #dddddd;
+}
+.content .review-version .form {
+    text-align: right;
+    margin-bottom: 16px;
+}
+.content .review-version .list-cont .cont {
+    padding: 40px 0 30px 0;
+    border-bottom: 1px solid #e5e5e5;
+}
+.content .review-version img {
+    float: left;
+}
+.content .review-version .list-cont .cont .text {
+    padding-left: 70px;
+    line-height: 22px;
+    color: #333;
+}
+.content .review-version .list-cont .cont .text .tit {
+    margin-bottom: 18px;
+}
+.content .review-version .list-cont .cont .text .data {
+    float: right;
 }

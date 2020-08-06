@@ -1,25 +1,31 @@
 .header {
+    width:100%;
     height: 120px;
     line-height: 120px;
-    position: relative;
+    position: fixed;
+    top:0;
+    left:0;
     font-size: 16px;
+    border-bottom: 1px solid #e8e9e7;
+    background-color: #fff;
+    z-index:10000;
 }
 .header .logo {
-    position: absolute;
-    top: 0;
-    left: 65px;
+    float:left;
+    margin-left: 65px;
 }
 .header .nav {
-    position: absolute;
-    top: 0;
-    left: 250px;
+    float:left;
+    margin-left: 250px;
 }
 .header .nav a {
     color: #3f2863;
     margin: 0 40px;
 }
+.header .nav a.active {
+    color: #ff7f21;
+}
 .header .welcome-text {
-    position: absolute;
-    top: 0;
-    right: 50px;
+    float:right;
+    margin-right: 50px;
 }

@@ -1,11 +1,9 @@
 /*
  * @Author: houxiaoling 
- * @Date: 2020-08-06 15:25:58 
+ * @Date: 2020-07-31 17:03:24 
  * @Last Modified by: houxiaoling
- * @Last Modified time: 2020-08-06 15:27:45
- * 文章
+ * @Last Modified time: 2020-08-06 15:25:47
  */
-
 import React, { Component } from 'react'
 import { Tabs, Row, Col, Pagination, Empty  } from 'antd';
 import { api } from '../../models/api'
@@ -13,7 +11,7 @@ import './index.css'
 
 const { TabPane } = Tabs;
 
-export default class Article extends Component {
+export default class Home extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -64,6 +62,24 @@ export default class Article extends Component {
         const articles = articleList.slice((currentPage-1)*pageSize,(currentPage-1)*pageSize+pageSize)
         return (
             <div>
+                <div className='banner' style={{background:'url("assets/img/banner.jpg") no-repeat'}}>
+                    <div className='cont w1000'>
+                        <div className='title'>
+                            <h3>MY<br/>BLOG</h3>
+                            <h4>well-balanced heart</h4>
+                        </div>
+                        <div className='amount'>
+                            <p>
+                                <span className='text'>访问量</span>
+                                <span className='access'>1000</span>
+                            </p>
+                            <p>
+                                <span className='text'>日志</span>
+                                <span className='daily-record'>1000</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
                 <div className='content'>
                     <div className='cont w1000'>
                         <div className='title'>
