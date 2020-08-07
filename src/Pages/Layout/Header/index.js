@@ -1,8 +1,8 @@
 /*
  * @Author: houxiaoling 
  * @Date: 2020-08-03 17:06:45 
- * @Last Modified by: houxiaoling
- * @Last Modified time: 2020-08-07 10:52:55
+ * @Last Modified by: Litao
+ * @Last Modified time: 2020-08-07 14:26:58
  * @公共头部
  */
 
@@ -25,7 +25,11 @@ export default class Header extends Component {
         }
     }
 
-    componentDidMount = () => {}
+    componentDidMount = () => {
+        window.addEventListener('hashchange', (res) => {
+            console.log(res)
+        })
+    }
 
 
     render () {
