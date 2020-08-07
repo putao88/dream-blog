@@ -2,7 +2,7 @@
  * @Author: houxiaoling 
  * @Date: 2020-08-06 10:21:35 
  * @Last Modified by: houxiaoling
- * @Last Modified time: 2020-08-06 11:53:53
+ * @Last Modified time: 2020-08-07 10:00:48
  * 留言组件
  */
 import React, { Component } from 'react'
@@ -66,24 +66,27 @@ export default class Leacots extends Component {
                                     </div>
                                     <div className='list-cont'>
                                         {
-                                            leacotsData.map(leacots => {
-                                                return (
-                                                    <div className='cont' key={leacots.id}>
-                                                        <div className='img'>
-                                                            <img src='assets/img/header.png' />
+                                            leacotsData.length ?
+                                                leacotsData.map(leacots => {
+                                                    return (
+                                                        <div className='cont' key={leacots.id}>
+                                                            <div className='img'>
+                                                                <img src='assets/img/header.png' />
+                                                            </div>
+                                                            <div className='text'>
+                                                                <p className='tit'>
+                                                                    <span className='name'>{leacots.name}</span>
+                                                                    <span className='data'>{leacots.time}</span>
+                                                                </p>
+                                                                <p className='ct'>
+                                                                    {leacots.content}
+                                                                </p>
+                                                            </div>
                                                         </div>
-                                                        <div className='text'>
-                                                            <p className='tit'>
-                                                                <span className='name'>{leacots.name}</span>
-                                                                <span className='data'>{leacots.time}</span>
-                                                            </p>
-                                                            <p className='ct'>
-                                                                {leacots.content}
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                )
-                                            })
+                                                    )
+                                                })
+                                            :
+                                            <Empty />
                                         }
                                     </div>
                                 </div>
@@ -91,7 +94,7 @@ export default class Leacots extends Component {
                         </div>
                     </div>
                     {/* 分页 */}
-                    <div style={{textAlign:'center'}}>
+                    <div style={{textAlign:'center',marginTop:'20px'}}>
                         <Pagination current={currentPage} defaultPageSize={pageSize} total={total}
                             onChange = {this.paginationChange}
                         />

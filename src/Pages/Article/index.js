@@ -2,7 +2,7 @@
  * @Author: houxiaoling 
  * @Date: 2020-08-06 15:25:58 
  * @Last Modified by: houxiaoling
- * @Last Modified time: 2020-08-06 15:27:45
+ * @Last Modified time: 2020-08-07 09:58:32
  * 文章
  */
 
@@ -105,7 +105,7 @@ export default class Article extends Component {
                             }
                         </div>
                         {/* 分页 */}
-                        <div style={{textAlign:'center'}}>
+                        <div style={{textAlign:'center',marginTop:'20px'}}>
                             <Pagination current={currentPage} defaultPageSize={pageSize} total={total}
                                 onChange = {this.paginationChange}
                             />

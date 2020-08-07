@@ -2,11 +2,12 @@
  * @Author: houxiaoling 
  * @Date: 2020-08-03 17:06:45 
  * @Last Modified by: houxiaoling
- * @Last Modified time: 2020-08-06 17:46:45
+ * @Last Modified time: 2020-08-07 10:52:55
  * @公共头部
  */
 
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom'
 import './index.css'
 export default class Header extends Component {
     constructor(props) {
@@ -23,6 +24,8 @@ export default class Header extends Component {
             ]
         }
     }
+
+    componentDidMount = () => {}
 
 
     render () {

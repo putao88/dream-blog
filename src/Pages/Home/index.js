@@ -2,7 +2,7 @@
  * @Author: houxiaoling 
  * @Date: 2020-07-31 17:03:24 
  * @Last Modified by: houxiaoling
- * @Last Modified time: 2020-08-06 15:25:47
+ * @Last Modified time: 2020-08-07 09:58:51
  */
 import React, { Component } from 'react'
 import { Tabs, Row, Col, Pagination, Empty  } from 'antd';
@@ -121,7 +121,7 @@ export default class Home extends Component {
                             }
                         </div>
                         {/* 分页 */}
-                        <div style={{textAlign:'center'}}>
+                        <div style={{textAlign:'center',marginTop:'20px'}}>
                             <Pagination current={currentPage} defaultPageSize={pageSize} total={total}
                                 onChange = {this.paginationChange}
                             />

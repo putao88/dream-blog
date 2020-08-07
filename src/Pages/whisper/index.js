@@ -2,7 +2,7 @@
  * @Author: houxiaoling 
  * @Date: 2020-08-05 16:16:26 
  * @Last Modified by: houxiaoling
- * @Last Modified time: 2020-08-06 17:16:18
+ * @Last Modified time: 2020-08-07 10:05:31
  * 微语
  */
 import React, { Component } from 'react'
@@ -84,6 +84,7 @@ export default class Whisper extends Component {
                 <div className='cont'>
                     <div className='whisper-list'>
                         {
+                            whispers.length ?
                             whispers.map((whisper,index) => {
                                 return (
                                     <div className='item-box' key={whisper.id}>
@@ -134,34 +135,39 @@ export default class Whisper extends Component {
                                             </div>
                                             <div className='list-cont'>
                                                 {
-                                                    leacotsList.map(leacots => {
-                                                        return (
-                                                            <div className='cont' key={leacots.id}>
-                                                                <div className='img'>
-                                                                    <img src='assets/img/header.png' />
+                                                    leacotsList.length ?
+                                                        leacotsList.map(leacots => {
+                                                            return (
+                                                                <div className='cont' key={leacots.id}>
+                                                                    <div className='img'>
+                                                                        <img src='assets/img/header.png' />
+                                                                    </div>
+                                                                    <div className='text'>
+                                                                        <p className='tit'>
+                                                                            <span className='name'>{leacots.name}</span>
+                                                                            <span className='data'>{leacots.time}</span>
+                                                                        </p>
+                                                                        <p className='ct'>
+                                                                            {leacots.content}
+                                                                        </p>
+                                                                    </div>
                                                                 </div>
-                                                                <div className='text'>
-                                                                    <p className='tit'>
-                                                                        <span className='name'>{leacots.name}</span>
-                                                                        <span className='data'>{leacots.time}</span>
-                                                                    </p>
-                                                                    <p className='ct'>
-                                                                        {leacots.content}
-                                                                    </p>
-                                                                </div>
-                                                            </div>
-                                                        )
-                                                    })
+                                                            )
+                                                        })
+                                                        :
+                                                        <Empty />
                                                 }
                                             </div>
                                         </div>
                                     </div>
                                 )
                             })
+                            :
+                            <Empty />
                         }
                     </div>
                     {/* 分页 */}
-                    <div style={{textAlign:'center'}}>
+                    <div style={{textAlign:'center',marginTop:'20px'}}>
                         <Pagination current={currentPage} defaultPageSize={pageSize} total={total}
                             onChange = {this.paginationChange}
                         />
