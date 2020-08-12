@@ -18,6 +18,7 @@
     margin-right: 86px;
 }
 .about-content .item.info p {
+    color:#ff7f21;
     font-size: 16px;
     line-height: 50px;
     margin-top: 15px;
@@ -30,4 +31,32 @@
 }
 .about-content .item.contact .cont .text {
     line-height: 36px;
+}
+.tool .ant-card-cover > img {
+    display: inline;
+    width:150px;
+    height:150px;
+}
+.tool .ant-card-body {
+    padding: 10px 24px;
+}
+.per-info .cntent-icon {
+    cursor: pointer;
+    font-size: 18px;
+}
+.text>p span {
+    font-weight: 600;
+    color:#3f2863;
+}
+.text>p>span>span{
+    margin-right: 5px;
+}
+.text>p {
+    margin: 5px 0px;
+}
+.text>p>span.tag{
+    color:#ff7f21;
+    background: rgba(27,31,35,.05);
+    padding: .2rem .4rem;
+    font-weight: 500;
 }

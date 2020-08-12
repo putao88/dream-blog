@@ -2,11 +2,12 @@
  * @Author: houxiaoling 
  * @Date: 2020-08-03 17:31:44 
  * @Last Modified by: houxiaoling
- * @Last Modified time: 2020-08-05 15:50:12
+ * @Last Modified time: 2020-08-11 16:43:40
  * 公共底部
  */
 
 import React, { Component } from 'react';
+import { GithubOutlined, MailOutlined } from '@ant-design/icons';
 import './index.css'
 
 export default class Footer extends Component {

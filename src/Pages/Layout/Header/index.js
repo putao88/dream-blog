@@ -1,13 +1,13 @@
 /*
  * @Author: houxiaoling 
  * @Date: 2020-08-03 17:06:45 
- * @Last Modified by: Litao
- * @Last Modified time: 2020-08-07 14:26:58
+ * @Last Modified by: houxiaoling
+ * @Last Modified time: 2020-08-07 15:20:46
  * @公共头部
  */
 
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import './index.css'
 export default class Header extends Component {
     constructor(props) {
@@ -47,6 +47,16 @@ export default class Header extends Component {
                             return <a key={nav.id} onClick={this.changeUrl} href={nav.href} className={nav.activeColor ? 'active':''}>{nav.name}</a>
                         })
                     }
+                    {/* {
+                        navList.map((nav,index) => {
+                            return <NavLink 
+                            key={nav.id} 
+                            to={nav.href} 
+                            activeClassName="active"
+                            strict={true}
+                            >{nav.name}</NavLink>
+                        })
+                    } */}
                 </div>
                 <p className='welcome-text'>欢迎来到葡萄的博客~</p>
             </div>

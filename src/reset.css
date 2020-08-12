@@ -2,13 +2,12 @@
  * @Author: houxiaoling 
  * @Date: 2020-05-08 14:15:17 
  * @Last Modified by: houxiaoling
- * @Last Modified time: 2020-08-06 10:56:25
+ * @Last Modified time: 2020-08-11 11:45:57
  * @Description: 公共样式清除
  */
 
 /* 公共样式清除 */
 a {
-    color: #333;
     text-decoration: none;
     cursor: pointer;
 }
@@ -90,4 +89,10 @@ img {
 
 textarea.ant-input:hover, textarea.ant-input:focus {
     border: 1px solid #402760;
+}
+
+/* 卡片样式 */
+.ant-card-cover {
+    padding:10px;
+    text-align:center;
 }
