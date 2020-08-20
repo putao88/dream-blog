@@ -1,0 +1,5 @@
+.tool-content .slider {
+    height:100%;
+    width:230px;
+    overflow: auto;
+}

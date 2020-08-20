@@ -2,7 +2,7 @@
  * @Author: houxiaoling 
  * @Date: 2020-08-03 17:31:44 
  * @Last Modified by: houxiaoling
- * @Last Modified time: 2020-08-11 16:43:40
+ * @Last Modified time: 2020-08-20 17:41:09
  * 公共底部
  */
 
@@ -20,7 +20,7 @@ export default class Footer extends Component {
         return (
             <div className='footer-wrap'>
                 <div className='footer w1000'>
-                    <div className='qrcode'>
+                    {/* <div className='qrcode'>
                         <img src='assets/img/wchat.png' />
                     </div>
                     <div className='practice-mode'>
@@ -31,8 +31,7 @@ export default class Footer extends Component {
                             <p>手机<span className='WeChat'>15773281560</span></p>
                             <p>邮箱<span className='WeChat'>15773281560@163.com</span></p>
                         </div>
-                    </div>
-
+                    </div> */}
                 </div>
             </div>
         )

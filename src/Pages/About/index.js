@@ -2,7 +2,7 @@
  * @Author: houxiaoling 
  * @Date: 2020-08-06 15:43:11 
  * @Last Modified by: houxiaoling
- * @Last Modified time: 2020-08-12 17:21:22
+ * @Last Modified time: 2020-08-20 16:10:15
  * 关于我
  */
 import React, { Component } from 'react'
@@ -29,7 +29,7 @@ export default class About extends Component {
                             <h3>我的介绍</h3>
                         </div>
                         <div className='cont'>
-                            <img src='assets/img/xc_img1.jpg' />
+                            <img src='assets/img/touxiang.jpg' />
                             <div className='per-info'>
                                 <p>
                                     <span>葡萄</span><br />

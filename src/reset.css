@@ -2,7 +2,7 @@
  * @Author: houxiaoling 
  * @Date: 2020-05-08 14:15:17 
  * @Last Modified by: houxiaoling
- * @Last Modified time: 2020-08-11 11:45:57
+ * @Last Modified time: 2020-08-20 17:49:36
  * @Description: 公共样式清除
  */
 
@@ -15,6 +15,10 @@ blockquote, body, button, dd, div, dl, dt, form, h1, h2, h3, h4, h5, h6, input, 
     margin: 0;
     padding: 0;
     -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+body {
+    width:100%;
+    height: calc(100% - 80px);
 }
 h1, h2, h3, h4, h5, h6 {
     font-weight: 400;
@@ -95,4 +99,30 @@ textarea.ant-input:hover, textarea.ant-input:focus {
 .ant-card-cover {
     padding:10px;
     text-align:center;
+}
+
+/* 导航菜单样式 */
+.ant-menu-item-selected {
+    color:#ff7f21;
+}
+.ant-menu-item-active {
+    color:#ff7f21 !important;
+}
+.ant-menu-submenu-active, 
+.ant-menu-submenu-active .ant-menu-submenu-title, 
+.ant-menu-submenu-title:hover {
+    color:#ff7f21 !important;
+}
+.ant-menu-submenu-inline>.ant-menu-submenu-title:hover .ant-menu-submenu-arrow::before,
+.ant-menu-submenu-inline > .ant-menu-submenu-title:hover .ant-menu-submenu-arrow::after {
+    background: linear-gradient(to right, #ff7f21, #ff7f21)
+}
+.ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected {
+    background-color: #fbedd2;
+}
+.ant-menu-submenu-selected {
+    color: #ff7f21;
+}
+.ant-menu-inline .ant-menu-item::after {
+    border-right: 3px solid #ff7f21;
 }

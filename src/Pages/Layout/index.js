@@ -2,7 +2,7 @@
  * @Author: HouXiaoLing 
  * @Date: 2020-05-11 17:24:01 
  * @Last Modified by: houxiaoling
- * @Last Modified time: 2020-08-07 15:12:45
+ * @Last Modified time: 2020-08-20 16:44:45
  */
 import React, { Component } from 'react';
 import { Route, Redirect, Switch  } from 'react-router-dom'
@@ -16,6 +16,8 @@ import Article from '../Article'
 import Whisper from '../Whisper'
 import Leacots from '../Leacots'
 import About from '../About'
+import Tool from '../Tool'
+
 
 
 
@@ -30,7 +32,7 @@ export default class Layout extends Component {
         return (
             <div>
                 <Header />
-                <div style={{marginTop:'120px'}}>
+                <div style={{marginTop:'80px'}}>
                     <Switch>
                         <Route path="/" exact component={Home}></Route>
                         <Route path="/home" exact component={Home}></Route>
@@ -39,6 +41,7 @@ export default class Layout extends Component {
                         <Route path="/whisper" exact component={Whisper}></Route>
                         <Route path="/leacots" exact component={Leacots}></Route>
                         <Route path="/about" exact component={About}></Route>
+                        <Route path="/tool" exact component={Tool}></Route>
                     </Switch>
                 </div>
                 <Footer />

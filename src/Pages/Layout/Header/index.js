@@ -2,12 +2,13 @@
  * @Author: houxiaoling 
  * @Date: 2020-08-03 17:06:45 
  * @Last Modified by: houxiaoling
- * @Last Modified time: 2020-08-07 15:20:46
+ * @Last Modified time: 2020-08-20 16:18:22
  * @公共头部
  */
 
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom'
+import { Link } from 'react-router-dom'
+import { Menu } from 'antd';
 import './index.css'
 export default class Header extends Component {
     constructor(props) {
@@ -20,20 +21,29 @@ export default class Header extends Component {
                 { id:3, href:'#/whisper/', name:'微语', activeColor: false},
                 { id:4, href:'#/leacots/', name:'留言', activeColor: false},
                 { id:5, href:'#/about/', name:'关于', activeColor: false},
+                { id:5, href:'#/tool/', name:'工具', activeColor: false},
 
-            ]
+
+            ],
+            current:'/home/'
         }
     }
 
     componentDidMount = () => {
-        window.addEventListener('hashchange', (res) => {
-            console.log(res)
-        })
     }
+
+    handleClick = e => {
+        this.setState({ 
+            current: e.key
+        });
+    };
+
+    
+
 
 
     render () {
-        const { navList,url } = this.state
+        const { navList,current } = this.state
         return (
             <div className='header'>
                 <h1 className='logo'>
@@ -47,16 +57,15 @@ export default class Header extends Component {
                             return <a key={nav.id} onClick={this.changeUrl} href={nav.href} className={nav.activeColor ? 'active':''}>{nav.name}</a>
                         })
                     }
-                    {/* {
+                    {/* <Menu onClick={this.handleClick} selectedKeys={[current]} mode="horizontal">
+                    {
                         navList.map((nav,index) => {
-                            return <NavLink 
-                            key={nav.id} 
-                            to={nav.href} 
-                            activeClassName="active"
-                            strict={true}
-                            >{nav.name}</NavLink>
+                            return <Menu.Item key={nav.href} >
+                                <Link to={nav.href} >{nav.name}</Link>
+                            </Menu.Item>
                         })
-                    } */}
+                    }
+                    </Menu> */}
                 </div>
                 <p className='welcome-text'>欢迎来到葡萄的博客~</p>
             </div>
