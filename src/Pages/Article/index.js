@@ -2,30 +2,30 @@
  * @Author: houxiaoling 
  * @Date: 2020-08-06 15:25:58 
  * @Last Modified by: houxiaoling
- * @Last Modified time: 2020-08-07 09:58:32
+ * @Last Modified time: 2020-09-18 18:09:16
  * 文章
  */
 
 import React, { Component } from 'react'
-import { Tabs, Row, Col, Pagination, Empty  } from 'antd';
+import Markdown from 'react-markdown';
+import { Menu, Input } from 'antd';
 import { api } from '../../models/api'
 import './index.css'
 
-const { TabPane } = Tabs;
+const { SubMenu } = Menu;
+const { Search } = Input;
 
 export default class Article extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            articleList:[],
-            articleType:'前端文章',
-            currentPage:1,
-            pageSize:5,
-            total:0,
+            markdown:'',
+            articleType:[],
         }
     }
 
-    componentDidMount() {
+
+    componentWillMount() {
         this.getArticleByType()
     }
 
@@ -35,81 +35,104 @@ export default class Article extends Component {
         api.getArticleByType({info:JSON.stringify( { type:articleType} )}, res => {
             if (res.code === 200) {
                 this.setState({
-                    articleList: res.data,
-                    total: res.data.length,
+                    markdown: res.data[0].content,
                 })
             }
         })
     }
+    // getArticleByType = () => {
+    //     api.queryArticleClassify({},res => {
+    //       const articleType = this.fixIntoTree(res.data,0);
+    //       this.setState({
+    //         articleType
+    //       })
+    //     });
+    // }
 
-    /* 文章类型切换 */
-    tabChange = (type) => {
-        this.setState({
-            articleType: type,
-            currentPage: 1,
-        }, () => {
-            this.getArticleByType()
-        })
-    }
-
-    paginationChange = ( page,pageSize ) => {
-        this.setState({
-            currentPage: page
-        })
+    //整合数据成树形结构需要的
+    fixIntoTree = (data,father_id) => {
+        var tree = [];
+        var temp;
+        for (var i = 0; i < data.length; i++) {
+            if (data[i].father_id == father_id) {
+                var obj = {
+                    value:data[i].id,
+                    label:data[i].name,
+                };
+                temp = this.fixIntoTree(data, data[i].id);
+                if (temp.length > 0) {
+                    obj.children = temp;
+                }
+                tree.push(obj);
+            }
+        }
+        return tree;
     }
 
     render () {
-        const { articleList, currentPage, pageSize, total } = this.state
-        //文章分页后的内容
-        const articles = articleList.slice((currentPage-1)*pageSize,(currentPage-1)*pageSize+pageSize)
+        const { markdown, articleType } = this.state
+        const contentHeight = document.body.offsetHeight - 41
         return (
-            <div>
-                <div className='content'>
-                    <div className='cont w1000'>
-                        <div className='title'>
-                        <Tabs defaultActiveKey="前端文章" onChange={this.tabChange}>
-                            <TabPane tab="前端文章" key="前端文章" />
-                            <TabPane tab="心情随笔" key="心情随笔" />
-                            <TabPane tab="其他文章" key="其他文章" />
-                        </Tabs>
-                        </div>
-                        <div className='list-item'>
-                            {
-                                articles.length ?
-                                    articles.map( article => {
-                                        return (
-                                            <div className='item' key={article.id}>
-                                                <Row gutter={20}>
-                                                    <Col span={10}>
-                                                        <div className='img'>
-                                                                <img src='assets/img/sy_img1.jpg' />
-                                                        </div>
-                                                    </Col>
-                                                    <Col span={14}>
-                                                        <div className='item-cont'>
-                                                            <h3>
-                                                                {article.title}
-                                                                <button className='layui-btn layui-btn-danger new-icon'>new</button>
-                                                            </h3>
-                                                            <h5>{article.type}</h5>
-                                                            <p>{article.content}</p>
-                                                            <a href='#' className='go-icon' style={{background:'url("assets/img/jiantou.png") center center no-repeat'}}></a>
-                                                        </div>
-                                                    </Col>
-                                                </Row>
-                                            </div>
-                                        )
-                                    })
-                                    :
-                                    <Empty /> 
-                            }
-                        </div>
-                        {/* 分页 */}
-                        <div style={{textAlign:'center',marginTop:'20px'}}>
-                            <Pagination current={currentPage} defaultPageSize={pageSize} total={total}
-                                onChange = {this.paginationChange}
-                            />
-                        </div>
+            <div className='article-content' style={{height:contentHeight}}>
+                <div className='slider'>
+                    <div style={{ padding:'15px', width:'250px', borderRight:'1px solid #f0f0f0' }}>
+                        <Search
+                            placeholder="输入你想找的文章"
+                            onSearch={value => console.log(value)}
+                            style={{ width: '100%' }}
+                        />
+                    </div>
+
+                    <Menu
+                        onClick={this.handleClick}
+                        style={{ width: 250, height:'calc(100% - 64px)' }}
+                        defaultSelectedKeys={['1']}
+                        defaultOpenKeys={['sub1']}
+                        mode="inline"
+                    >
+                        {/* {
+                            articleType.map(item => {
+                                return <SubMenu key={item.id} title={item.label}>
+                                    {
+                                        item.children.map(child => {
+                                            return <Menu.Item key={child.id}>{child.name}</Menu.Item>
+                                        })
+                                    }
+                                </SubMenu>
+                            })
+                        } */}
+                        <SubMenu key="sub1" title='前端'>
+                            <Menu.Item key="1">JavaScript</Menu.Item>
+                            <Menu.Item key="2">NodeJs</Menu.Item>
+                            <Menu.Item key="3">React Native</Menu.Item>
+                            <Menu.Item key="4">Flutter</Menu.Item>
+                            <Menu.Item key="5">PWA</Menu.Item>
+                        </SubMenu>
+                        <SubMenu key="sub2" title="后台">
+                            <Menu.Item key="5">Java</Menu.Item>
+                            <Menu.Item key="6">MySql</Menu.Item>
+                        </SubMenu>
+                        <SubMenu key="sub3" title="技术网站">
+                            <Menu.Item key="7">Option 7</Menu.Item>
+                            <Menu.Item key="8">Option 8</Menu.Item>
+                        </SubMenu>
+                        <SubMenu key="sub4" title="软件推荐">
+                            <Menu.Item key="9">Option 9</Menu.Item>
+                            <Menu.Item key="10">Option 10</Menu.Item>
+                            <Menu.Item key="11">Option 11</Menu.Item>
+                            <Menu.Item key="12">Option 12</Menu.Item>
+                        </SubMenu>
+                        <SubMenu key="sub5" title="学习资源">
+                            <Menu.Item key="9">Option 9</Menu.Item>
+                            <Menu.Item key="10">Option 10</Menu.Item>
+                            <Menu.Item key="11">Option 11</Menu.Item>
+                            <Menu.Item key="12">Option 12</Menu.Item>
+                        </SubMenu>
+                    </Menu>
+                </div>
+                <div className='content-main'>
+                    <div className='content-wrap'>
+                        <Markdown className='markdown-body' source={markdown} />
                     </div>
                 </div>
             </div>

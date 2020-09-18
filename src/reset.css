@@ -2,7 +2,7 @@
  * @Author: houxiaoling 
  * @Date: 2020-05-08 14:15:17 
  * @Last Modified by: houxiaoling
- * @Last Modified time: 2020-08-20 17:49:36
+ * @Last Modified time: 2020-09-03 13:55:19
  * @Description: 公共样式清除
  */
 
@@ -125,4 +125,9 @@ textarea.ant-input:hover, textarea.ant-input:focus {
 }
 .ant-menu-inline .ant-menu-item::after {
     border-right: 3px solid #ff7f21;
+}
+/* input样式清除 */
+.ant-input-affix-wrapper:focus {
+    border-color: #ff7f21;
+    box-shadow: 0 0 0 2px rgba(248, 198, 104, 0.2);
 }

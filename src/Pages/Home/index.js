@@ -2,7 +2,7 @@
  * @Author: houxiaoling 
  * @Date: 2020-07-31 17:03:24 
  * @Last Modified by: houxiaoling
- * @Last Modified time: 2020-08-07 09:58:51
+ * @Last Modified time: 2020-08-25 15:04:17
  */
 import React, { Component } from 'react'
 import { Tabs, Row, Col, Pagination, Empty  } from 'antd';
@@ -62,7 +62,7 @@ export default class Home extends Component {
         const articles = articleList.slice((currentPage-1)*pageSize,(currentPage-1)*pageSize+pageSize)
         return (
             <div>
-                <div className='banner' style={{background:'url("assets/img/banner.jpg") no-repeat'}}>
+                <div className='banner' style={{background:'url("assets/img/banner.jpg") no-repeat',backgroundSize:'100%'}}>
                     <div className='cont w1000'>
                         <div className='title'>
                             <h3>MY<br/>BLOG</h3>

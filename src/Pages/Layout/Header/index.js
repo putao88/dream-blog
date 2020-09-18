@@ -2,7 +2,7 @@
  * @Author: houxiaoling 
  * @Date: 2020-08-03 17:06:45 
  * @Last Modified by: houxiaoling
- * @Last Modified time: 2020-08-20 16:18:22
+ * @Last Modified time: 2020-09-03 11:17:47
  * @公共头部
  */
 
@@ -21,9 +21,6 @@ export default class Header extends Component {
                 { id:3, href:'#/whisper/', name:'微语', activeColor: false},
                 { id:4, href:'#/leacots/', name:'留言', activeColor: false},
                 { id:5, href:'#/about/', name:'关于', activeColor: false},
-                { id:5, href:'#/tool/', name:'工具', activeColor: false},
-
-
             ],
             current:'/home/'
         }

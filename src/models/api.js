@@ -2,7 +2,7 @@
  * @Author: houxiaoling 
  * @Date: 2020-07-31 11:55:39 
  * @Last Modified by: houxiaoling
- * @Last Modified time: 2020-08-06 11:46:55
+ * @Last Modified time: 2020-09-18 18:02:43
  */
 import exp from './exp'
 let { AxiosGet, AxiosPost } = exp
@@ -45,6 +45,16 @@ let api = {
     },
     getAllLeacots: ( data,callback ) => {
         let uri = url + '/leacots/queryAll'
+		AxiosGet({
+			url: uri,
+			data: data,
+			reback: (res) => {
+				callback(res)
+			}
+		})
+    },
+    queryArticleClassify: ( data, callback ) => {
+        let uri = '/articles/queryArticleClassify'
 		AxiosGet({
 			url: uri,
 			data: data,

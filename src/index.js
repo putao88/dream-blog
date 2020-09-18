@@ -2,7 +2,7 @@
  * @Author: houxiaoling 
  * @Date: 2020-05-08 11:15:42 
  * @Last Modified by: houxiaoling
- * @Last Modified time: 2020-08-06 16:54:02
+ * @Last Modified time: 2020-09-17 17:32:30
  */
 
 
@@ -12,6 +12,7 @@ import { Route, Redirect, Switch, HashRouter } from 'react-router-dom'
 import './index.css'
 import './reset.css' //重置样式
 import './layui.css' //layui样式
+import './markdown.css' //markdown样式
 import * as serviceWorker from './serviceWorker'
 import Layout from './Pages/Layout'
 
