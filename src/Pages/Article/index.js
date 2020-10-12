@@ -2,7 +2,7 @@
  * @Author: houxiaoling 
  * @Date: 2020-08-06 15:25:58 
  * @Last Modified by: houxiaoling
- * @Last Modified time: 2020-09-21 15:43:25
+ * @Last Modified time: 2020-10-12 10:31:50
  * 文章
  */
 
@@ -32,10 +32,12 @@ export default class Article extends Component {
 
     getArticleByType = () => {
         api.queryArticleClassify({}, res => {
-            const articleType = fixIntoTree(res.data, 0, 'title', 'id', 'children', true);
-            this.setState({
-                articleType
-            })
+            if (res.data) {
+                const articleType = fixIntoTree(res.data, 0, 'title', 'id', 'children', true);
+                this.setState({
+                    articleType
+                })
+            }
         });
     }
 

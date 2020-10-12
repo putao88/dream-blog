@@ -73,21 +73,3 @@
     text-align: right;
     margin-bottom: 16px;
 }
-.content .review-version .list-cont .cont {
-    padding: 40px 0 30px 0;
-    border-bottom: 1px solid #e5e5e5;
-}
-.content .review-version img {
-    float: left;
-}
-.content .review-version .list-cont .cont .text {
-    padding-left: 70px;
-    line-height: 22px;
-    color: #333;
-}
-.content .review-version .list-cont .cont .text .tit {
-    margin-bottom: 18px;
-}
-.content .review-version .list-cont .cont .text .data {
-    float: right;
-}

@@ -1,0 +1,27 @@
+.commentEditor {
+    border: 1px solid #f0f0f0;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    position: relative;
+    padding: 10px;
+}
+.bf-content {
+    height:auto;
+}
+.commentEditor .ant-input,  .commentEditor .ant-input:focus {
+    font-size: 13px;
+    border: none;
+    box-shadow: none;
+}
+
+.bf-controlbar {
+    box-shadow:none;
+    position: absolute;
+    bottom: -62px;
+}
+.bf-dropdown .dropdown-handler>span {
+    padding:0 5px;
+}
+.bf-dropdown .dropdown-handler>span i {
+    font-size:22px;
+}

@@ -2,14 +2,17 @@
  * @Author: houxiaoling 
  * @Date: 2020-08-06 10:21:35 
  * @Last Modified by: houxiaoling
- * @Last Modified time: 2020-08-07 10:00:48
+ * @Last Modified time: 2020-10-12 17:52:52
  * 留言组件
  */
 import React, { Component } from 'react'
 import { Tabs, Row, Col, Pagination, Empty, Input, Button  } from 'antd';
 import { api } from '../../models/api'
 import './index.css'
+import Comments from '../../Components/Comments'
+import CommentEditor from '../../Components/CommentEditor'
 const { TextArea } = Input;
+
 
 export default class Leacots extends Component {
     constructor(props) {
@@ -56,9 +59,8 @@ export default class Leacots extends Component {
                             <div className='review-version'>
                                 <div className='form-box'>
                                     <img className='banner-img' src='assets/img/liuyan.jpg' />
-                                    <div className='form'>
-                                        <TextArea rows={3} placeholder='既然来了，就说几句'/>
-                                        <Button type="primary" style={{marginTop:'20px',width:'100px',height:'40px'}}>确定</Button>
+                                    <div style={{margin:'70px 0'}}>
+                                        <CommentEditor />
                                     </div>
                                     <div className='volume'>
                                         全部留言
@@ -69,20 +71,7 @@ export default class Leacots extends Component {
                                             leacotsData.length ?
                                                 leacotsData.map(leacots => {
                                                     return (
-                                                        <div className='cont' key={leacots.id}>
-                                                            <div className='img'>
-                                                                <img src='assets/img/header.png' />
-                                                            </div>
-                                                            <div className='text'>
-                                                                <p className='tit'>
-                                                                    <span className='name'>{leacots.name}</span>
-                                                                    <span className='data'>{leacots.time}</span>
-                                                                </p>
-                                                                <p className='ct'>
-                                                                    {leacots.content}
-                                                                </p>
-                                                            </div>
-                                                        </div>
+                                                        <Comments key={leacots.id} leacots={leacots} />
                                                     )
                                                 })
                                             :

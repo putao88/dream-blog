@@ -1,0 +1,42 @@
+.cont-wrap .cont {
+    padding: 40px 0 20px 0;
+}
+.cont-wrap .cont {
+    max-width: 100%;
+}
+.cont-wrap .cont .text {
+    margin-left: 70px;
+    padding-bottom: 15px;
+    line-height: 22px;
+    color: #333;
+    border-bottom: 1px solid #e5e5e5;
+}
+.cont-wrap .cont .text .tit {
+    margin-bottom: 18px;
+}
+.cont-wrap .cont .avatar {
+    float:left;
+}
+.cont-wrap .cont .text .data {
+    float: left;
+    color:#8a9aa9;
+}
+.cont-wrap .cont .text .action-box {
+    float: right;
+    color:#8a93a0;
+}
+.cont-wrap .cont .text .action-wrap {
+    height:30px;
+    line-height:30px;
+    clear: both;
+}
+.action-box span {
+    font-size: 12px;
+    margin-left:8px;
+    cursor:pointer;
+}
+.text-child {
+    padding: 10px;
+    background-color: #fafbfc;
+    border-radius: 3px;
+}
