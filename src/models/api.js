@@ -2,7 +2,7 @@
  * @Author: houxiaoling 
  * @Date: 2020-07-31 11:55:39 
  * @Last Modified by: houxiaoling
- * @Last Modified time: 2020-09-21 15:25:29
+ * @Last Modified time: 2020-10-21 17:24:46
  */
 import exp from './exp'
 let { AxiosGet, AxiosPost } = exp
@@ -53,6 +53,16 @@ let api = {
 			}
 		})
     },
+    queryArticleClassify: ( data, callback ) => {
+        let uri = url + '/articles/queryArticleClassify'
+		AxiosGet({
+			url: uri,
+			data: data,
+			reback: (res) => {
+				callback(res)
+			}
+		})
+    },
     getAllLeacots: ( data,callback ) => {
         let uri = url + '/leacots/queryAll'
 		AxiosGet({
@@ -63,9 +73,19 @@ let api = {
 			}
 		})
     },
-    queryArticleClassify: ( data, callback ) => {
-        let uri = url + '/articles/queryArticleClassify'
-		AxiosGet({
+    addLeacots: ( data,callback ) => {
+        let uri = url + '/leacots/addLeacots'
+		AxiosPost({
+			url: uri,
+			data: data,
+			reback: (res) => {
+				callback(res)
+			}
+		})
+    },
+    updateLeacots: ( data,callback ) => {
+        let uri = url + '/leacots/updateLeacots'
+		AxiosPost({
 			url: uri,
 			data: data,
 			reback: (res) => {

@@ -1,4 +1,5 @@
 .commentEditor {
+    background-color: #fff;
     border: 1px solid #f0f0f0;
     border-radius: 4px;
     margin-bottom: 10px;
@@ -7,6 +8,8 @@
 }
 .bf-content {
     height:auto;
+    padding-bottom: 0px;
+    font-size:13px;
 }
 .commentEditor .ant-input,  .commentEditor .ant-input:focus {
     font-size: 13px;
@@ -17,11 +20,18 @@
 .bf-controlbar {
     box-shadow:none;
     position: absolute;
-    bottom: -62px;
+    bottom: -38px;
 }
 .bf-dropdown .dropdown-handler>span {
     padding:0 5px;
 }
 .bf-dropdown .dropdown-handler>span i {
     font-size:22px;
+}
+.bf-container .public-DraftEditor-content>div {
+    padding-bottom:0px;
+}
+.commentEditor .ant-btn-primary {
+    height:28px;
+    width:60px;
 }

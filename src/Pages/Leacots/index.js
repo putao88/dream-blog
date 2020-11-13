@@ -2,7 +2,7 @@
  * @Author: houxiaoling 
  * @Date: 2020-08-06 10:21:35 
  * @Last Modified by: houxiaoling
- * @Last Modified time: 2020-10-12 17:52:52
+ * @Last Modified time: 2020-11-13 16:57:30
  * 留言组件
  */
 import React, { Component } from 'react'
@@ -32,8 +32,17 @@ export default class Leacots extends Component {
     getAllLeacots = () => {
         api.getAllLeacots({}, res => {
             if (res.code === 200) {
+                let leacotsList = []
+                const data = res.data
+                data.map(item => {
+                    if (item.comment_replys) {
+                        item.comment_replys = JSON.parse(item.comment_replys)
+                    }
+                    item.replyShow = false
+                    leacotsList.push(item)
+                })
                 this.setState({
-                    leacotsList: res.data,
+                    leacotsList,
                     total: res.data.length,
                 })
             }
@@ -44,6 +53,12 @@ export default class Leacots extends Component {
     paginationChange = ( page, pageSize ) => {
         this.setState({
             currentPage: page
+        })
+    }
+
+    changeData = (data) => {
+        this.setState({
+            leacotsList:data
         })
     }
 
@@ -60,7 +75,12 @@ export default class Leacots extends Component {
                                 <div className='form-box'>
                                     <img className='banner-img' src='assets/img/liuyan.jpg' />
                                     <div style={{margin:'70px 0'}}>
-                                        <CommentEditor />
+                                        <CommentEditor
+											leacots={null}
+                                            parentId={0} 
+                                            dataSource={leacotsList} 
+                                            changeDataSource={this.changeData}
+                                        />
                                     </div>
                                     <div className='volume'>
                                         全部留言
@@ -71,7 +91,12 @@ export default class Leacots extends Component {
                                             leacotsData.length ?
                                                 leacotsData.map(leacots => {
                                                     return (
-                                                        <Comments key={leacots.id} leacots={leacots} />
+                                                        <Comments 
+                                                            key={leacots.id} 
+                                                            leacots={leacots} 
+                                                            dataSource={leacotsList} 
+                                                            changeData = {this.changeData}
+                                                        />
                                                     )
                                                 })
                                             :
