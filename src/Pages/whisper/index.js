@@ -2,14 +2,20 @@
  * @Author: houxiaoling 
  * @Date: 2020-08-05 16:16:26 
  * @Last Modified by: houxiaoling
- * @Last Modified time: 2020-08-07 10:05:31
+ * @Last Modified time: 2021-01-06 18:21:19
  * 微语
  */
 import React, { Component } from 'react'
 import { Tabs, Row, Col, Pagination, Empty, Input, Button  } from 'antd';
 import { TableOutlined, LikeOutlined, MessageOutlined, DownOutlined, UpOutlined } from '@ant-design/icons';
 import { api } from '../../models/api'
+import { formateLeacots } from '../../models/utils'
+
+
 import './index.css'
+import CommentEditor from '../../Components/CommentEditor'
+import Comments from '../../Components/Comments'
+
 
 const { TextArea } = Input;
 export default class Whisper extends Component {
@@ -26,7 +32,6 @@ export default class Whisper extends Component {
 
     componentDidMount() {
         this.getAllWhisper()
-        this.getAllLeacots()
     }
 
     getAllWhisper = () => {
@@ -46,11 +51,12 @@ export default class Whisper extends Component {
         })
     }
 
-    getAllLeacots = () => {
-        api.getAllLeacots({}, res => {
+    getLeacotsByParentId = (father_id) => {
+        api.getLeacotsByParentId({ info: JSON.stringify({ father_id: father_id }) }, res => {
             if (res.code === 200) {
+				let data = formateLeacots(res.data)
                 this.setState({
-                    leacotsList: res.data,
+                    leacotsList: data,
                     total: res.data.length,
                 })
             }
@@ -63,15 +69,24 @@ export default class Whisper extends Component {
         })
     }
 
-    openLeacots = (id) => {
+    openLeacots = (id,isOpen) => {
         const { whisperList } = this.state
         whisperList.map(item => {
             if (id === item.id) {
                 item.open = !item.open
             }
-        })
+		})
+		if (!isOpen) {
+			this.getLeacotsByParentId(id)
+		}
         this.setState({
             whisperList
+        })
+	}
+	
+	changeData = (data) => {
+        this.setState({
+            leacotsList:data
         })
     }
 
@@ -112,7 +127,7 @@ export default class Whisper extends Component {
                                                     <MessageOutlined />
                                                     <span>{whisper.comment_count}</span>
                                                 </p>
-                                                <p className='off' onClick= {() => this.openLeacots(whisper.id)}>
+                                                <p className='off' onClick= {() => this.openLeacots(whisper.id, whisper.open)}>
                                                     {
                                                         whisper.open ?
                                                         <span>
@@ -130,28 +145,24 @@ export default class Whisper extends Component {
                                         </div>
                                         <div className='review-version' style= {{ display: whisper.open ? 'block':'none' }}>
                                             <div className='form'>
-                                                <TextArea rows={3} />
-                                                <Button type="primary" style={{marginTop:'20px',width:'100px',height:'40px'}}>确定</Button>
+												<CommentEditor
+													leacots={null}
+													parentId={whisper.id} 
+													dataSource={leacotsList} 
+													changeDataSource={this.changeData}
+												/>
                                             </div>
                                             <div className='list-cont'>
                                                 {
                                                     leacotsList.length ?
                                                         leacotsList.map(leacots => {
                                                             return (
-                                                                <div className='cont' key={leacots.id}>
-                                                                    <div className='img'>
-                                                                        <img src='assets/img/header.png' />
-                                                                    </div>
-                                                                    <div className='text'>
-                                                                        <p className='tit'>
-                                                                            <span className='name'>{leacots.name}</span>
-                                                                            <span className='data'>{leacots.time}</span>
-                                                                        </p>
-                                                                        <p className='ct'>
-                                                                            {leacots.content}
-                                                                        </p>
-                                                                    </div>
-                                                                </div>
+																<Comments 
+																	key={leacots.id} 
+																	leacots={leacots} 
+																	dataSource={leacotsList} 
+																	changeData = {this.changeData}
+																/>
                                                             )
                                                         })
                                                         :

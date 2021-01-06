@@ -2,12 +2,13 @@
  * @Author: houxiaoling 
  * @Date: 2020-08-06 10:21:35 
  * @Last Modified by: houxiaoling
- * @Last Modified time: 2020-11-13 16:57:30
+ * @Last Modified time: 2021-01-06 17:33:57
  * 留言组件
  */
 import React, { Component } from 'react'
 import { Tabs, Row, Col, Pagination, Empty, Input, Button  } from 'antd';
 import { api } from '../../models/api'
+import { formateLeacots } from '../../models/utils'
 import './index.css'
 import Comments from '../../Components/Comments'
 import CommentEditor from '../../Components/CommentEditor'
@@ -32,17 +33,9 @@ export default class Leacots extends Component {
     getAllLeacots = () => {
         api.getAllLeacots({}, res => {
             if (res.code === 200) {
-                let leacotsList = []
-                const data = res.data
-                data.map(item => {
-                    if (item.comment_replys) {
-                        item.comment_replys = JSON.parse(item.comment_replys)
-                    }
-                    item.replyShow = false
-                    leacotsList.push(item)
-                })
+				let data = formateLeacots(res.data)
                 this.setState({
-                    leacotsList,
+                    leacotsList:data,
                     total: res.data.length,
                 })
             }

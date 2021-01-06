@@ -2,7 +2,7 @@
  * @Author: houxiaoling 
  * @Date: 2020-07-31 14:42:15 
  * @Last Modified by: houxiaoling
- * @Last Modified time: 2020-10-21 17:38:10
+ * @Last Modified time: 2021-01-06 17:31:57
  */
 
 /**
@@ -39,4 +39,19 @@ export const fixIntoTree = (data, father_id, label, value, children, hasArticle)
     return tree
 }
 
-
+/**
+ * @param {Object} 
+ * data: 源数据
+ * 格式化拿到的留言数据
+ */
+export const formateLeacots = (data) => {
+	let leacotsList = []
+	data.map(item => {
+		if (item.comment_replys) {
+			item.comment_replys = JSON.parse(item.comment_replys)
+		}
+		item.replyShow = false
+		leacotsList.push(item)
+	})
+	return leacotsList
+} 

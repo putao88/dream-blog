@@ -2,7 +2,7 @@
  * @Author: houxiaoling 
  * @Date: 2020-10-12 17:15:54 
  * @Last Modified by: houxiaoling
- * @Last Modified time: 2020-11-13 16:55:54
+ * @Last Modified time: 2021-01-06 18:26:58
  * 留言组件 
  */
 import React, { Component } from 'react'
@@ -67,7 +67,7 @@ export default class CommentEditor extends Component {
             status: 0,
             father_id: this.props.parentId,
             level:level,
-            time: moment().format('YYYY-MM-DD HH:mm:ss'),
+            time: moment().format('YYYY/MM/DD HH:mm:ss'),
 		}
 		const dataSource = this.props.dataSource || []
         if (level === 1) {
@@ -76,6 +76,8 @@ export default class CommentEditor extends Component {
             api.addLeacots({info:JSON.stringify(param)}, res => {
                 if (res.code === 200) {
 					this.props.changeDataSource(dataSource)
+					message.success("留言成功！")
+					this.clearEditor()
                 }
             })
         } else {
@@ -101,11 +103,22 @@ export default class CommentEditor extends Component {
             api.updateLeacots({info:JSON.stringify(data)}, res => {
                 if (res.code === 200) {
                     //改变源数据
-                    this.props.changeDataSource(dataSource)
+					this.props.changeDataSource(dataSource)
+					message.success("留言成功！")
+					this.clearEditor()
                 }
             })
-        }
-    }
+		}
+	}
+
+	 clearEditor = () => {
+		 this.setState({
+			nickName:'',
+			email:'',
+			website:'',
+			editorState: BraftEditor.createEditorState(null)
+		 })
+	 }
 
   
     render () {
