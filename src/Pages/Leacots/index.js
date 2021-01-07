@@ -2,7 +2,7 @@
  * @Author: houxiaoling 
  * @Date: 2020-08-06 10:21:35 
  * @Last Modified by: houxiaoling
- * @Last Modified time: 2021-01-06 17:33:57
+ * @Last Modified time: 2021-01-07 10:10:41
  * 留言组件
  */
 import React, { Component } from 'react'
@@ -27,11 +27,11 @@ export default class Leacots extends Component {
     }
     
     componentDidMount() {
-        this.getAllLeacots()
+        this.getLeacotsByParentId()
     }
 
-    getAllLeacots = () => {
-        api.getAllLeacots({}, res => {
+    getLeacotsByParentId = () => {
+        api.getLeacotsByParentId({ info: JSON.stringify({ father_id: '0' })}, res => {
             if (res.code === 200) {
 				let data = formateLeacots(res.data)
                 this.setState({
@@ -72,7 +72,9 @@ export default class Leacots extends Component {
 											leacots={null}
                                             parentId={0} 
                                             dataSource={leacotsList} 
-                                            changeDataSource={this.changeData}
+											changeDataSource={this.changeData}
+											type='leacots'
+											rowItem={null}
                                         />
                                     </div>
                                     <div className='volume'>

@@ -2,7 +2,7 @@
  * @Author: houxiaoling 
  * @Date: 2020-10-12 17:15:54 
  * @Last Modified by: houxiaoling
- * @Last Modified time: 2021-01-06 18:26:58
+ * @Last Modified time: 2021-01-07 11:01:37
  * 留言组件 
  */
 import React, { Component } from 'react'
@@ -18,7 +18,9 @@ export default class CommentEditor extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            editorState: BraftEditor.createEditorState(null)
+			editorState: BraftEditor.createEditorState(null),
+			type:props.type,
+			rowItem:props.rowItem,
         }
     }
 
@@ -76,6 +78,9 @@ export default class CommentEditor extends Component {
             api.addLeacots({info:JSON.stringify(param)}, res => {
                 if (res.code === 200) {
 					this.props.changeDataSource(dataSource)
+					if (this.state.type == 'whisper') {
+						this.updateWhisper()
+					}
 					message.success("留言成功！")
 					this.clearEditor()
                 }
@@ -104,11 +109,24 @@ export default class CommentEditor extends Component {
                 if (res.code === 200) {
                     //改变源数据
 					this.props.changeDataSource(dataSource)
+					if (this.state.type == 'whisper') {
+						this.updateWhisper()
+					}
 					message.success("留言成功！")
 					this.clearEditor()
                 }
             })
 		}
+
+	}
+
+	// 更新微语
+	updateWhisper = () => {
+		let param = JSON.parse(JSON.stringify(this.state.rowItem))
+		param.comment_count = param.comment_count + 1
+		api.updateWhisper({info:JSON.stringify(param)}, res => {
+			this.props.addWhisperConut(this.state.rowItem.id)
+		})
 	}
 
 	 clearEditor = () => {

@@ -54,6 +54,12 @@
 .whisper-content .whisper-list .op-list p.like {
     margin-right: 50px;
 }
+.whisper-content .whisper-list .op-list p.like span{
+    margin-right: 5px;
+}
+.whisper-content .whisper-list .op-list p.edit span{
+    margin-right: 5px;
+}
 .whisper-content .whisper-list .op-list p.off {
     float: right;
     -webkit-user-select: none;

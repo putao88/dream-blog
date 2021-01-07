@@ -2,7 +2,7 @@
  * @Author: houxiaoling 
  * @Date: 2020-09-25 17:56:13 
  * @Last Modified by: houxiaoling
- * @Last Modified time: 2020-11-13 16:39:57
+ * @Last Modified time: 2021-01-07 11:00:35
  * 留言组件 
  */
 
@@ -22,7 +22,9 @@ export default class Comments extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            leacots : props.leacots,
+			leacots : props.leacots,
+			type:props.type,
+			rowItem:props.rowItem,
         }
     }
 
@@ -52,12 +54,11 @@ export default class Comments extends Component {
 
     //回复框改变源数据
     changeDataSource = (data) => {
-		const xxx = data
         this.props.changeData(data)
     }
 
     render() {
-        const { leacots } = this.state
+        const { leacots, type, rowItem } = this.state
         const controls = []
         return (<div className='cont-wrap'>
              <div className='cont' key={leacots.id}>
@@ -97,7 +98,10 @@ export default class Comments extends Component {
                                 leacots={leacots} 
                                 dataSource={this.props.dataSource} 
                                 parentId={leacots.id}
-                                changeDataSource={this.changeDataSource}
+								changeDataSource={this.changeDataSource}
+								addWhisperConut={this.props.addWhisperConut}
+								type={type}
+								rowItem={rowItem}
                             />
                         </div>
                         : null
@@ -145,7 +149,10 @@ export default class Comments extends Component {
                                                 leacots={item} 
 												dataSource={this.props.dataSource}
 												parentId={leacots.id} 
-                                                changeDataSource={this.changeDataSource}
+												changeDataSource={this.changeDataSource}
+												addWhisperConut={this.props.addWhisperConut}
+												type={type}
+												rowItem={rowItem}
                                             /> : null }
                                     </div>
                                 </div>

@@ -2,7 +2,7 @@
  * @Author: houxiaoling 
  * @Date: 2020-08-05 16:16:26 
  * @Last Modified by: houxiaoling
- * @Last Modified time: 2021-01-06 18:21:19
+ * @Last Modified time: 2021-01-07 14:58:08
  * 微语
  */
 import React, { Component } from 'react'
@@ -15,6 +15,9 @@ import { formateLeacots } from '../../models/utils'
 import './index.css'
 import CommentEditor from '../../Components/CommentEditor'
 import Comments from '../../Components/Comments'
+import Markdown from 'react-markdown';
+
+
 
 
 const { TextArea } = Input;
@@ -26,7 +29,8 @@ export default class Whisper extends Component {
             currentPage:1,
             pageSize:3,
             total:0,
-            leacotsList:[],
+			leacotsList:[],
+			editHeight: document.body.offsetHeight - 60,
         }
     }
 
@@ -57,7 +61,6 @@ export default class Whisper extends Component {
 				let data = formateLeacots(res.data)
                 this.setState({
                     leacotsList: data,
-                    total: res.data.length,
                 })
             }
         })
@@ -83,19 +86,51 @@ export default class Whisper extends Component {
             whisperList
         })
 	}
+
+	// 点赞
+	addLikeCount = (id) => {
+		const { whisperList } = this.state
+		let row = {}
+        whisperList.map(item => {
+            if (id === item.id) {
+				item.like_count = item.like_count + 1
+                row = item
+            }
+		})
+		api.updateWhisper({info:JSON.stringify(row)}, res => {
+			this.setState({
+				whisperList
+			})
+		})
+
+	}
 	
 	changeData = (data) => {
-        this.setState({
+		this.setState({
             leacotsList:data
         })
-    }
+
+	}
+
+	addWhisperConut = (id) =>{
+		const { whisperList } = this.state
+		// 改变微语的留言数量
+		whisperList.map(item => {
+            if (id === item.id) {
+                item.comment_count = item.comment_count + 1
+            }
+		})
+		this.setState({
+			whisperList,
+        })
+	}
 
     render () {
-        const { whisperList, currentPage, pageSize, total, leacotsList } = this.state
+        const { whisperList, currentPage, pageSize, total, leacotsList, editHeight } = this.state
         //分页后的内容
-        const whispers = whisperList.slice((currentPage-1)*pageSize,(currentPage-1)*pageSize+pageSize)
+		const whispers = whisperList.slice((currentPage-1)*pageSize,(currentPage-1)*pageSize+pageSize)
         return (
-            <div className='content whisper-content'>
+            <div className='content whisper-content' style={{minHeight:editHeight}}>
                 <div className='cont'>
                     <div className='whisper-list'>
                         {
@@ -107,19 +142,19 @@ export default class Whisper extends Component {
                                             <div className='whisper-title'>
                                                 <TableOutlined />
                                                 <i className='layui-icon layui-icon-date'></i>
-                                                <span className='hour'>{whisper.time}</span>
-                                                <span className='date'>{whisper.date}</span>
+                                                <span className='hour'>{whisper.time.split(' ')[1]}</span>
+                                                <span className='date'>{whisper.time.split(' ')[0]}</span>
                                             </div>
-                                            <p className='text-cont'>
-                                              {whisper.content}
-                                            </p>
-                                            <div className='img-box'>
+                                            <div className='text-cont'>
+												<Markdown className='markdown-body' source={whisper.content} />
+                                            </div>
+                                            {/* <div className='img-box'>
                                                 <img src='assets/img/wy_img2.jpg' />
                                                 <img src='assets/img/wy_img3.jpg' />
                                                 <img src='assets/img/wy_img4.jpg' />
-                                            </div>
+                                            </div> */}
                                             <div className='op-list'>
-                                                <p className='like'>
+                                                <p className='like' onClick= {() => this.addLikeCount(whisper.id)}>
                                                     <LikeOutlined />
                                                     <span>{whisper.like_count}</span>
                                                 </p>
@@ -150,6 +185,9 @@ export default class Whisper extends Component {
 													parentId={whisper.id} 
 													dataSource={leacotsList} 
 													changeDataSource={this.changeData}
+													addWhisperConut={this.addWhisperConut}
+													type="whisper"
+													rowItem={whisper}
 												/>
                                             </div>
                                             <div className='list-cont'>
@@ -162,6 +200,9 @@ export default class Whisper extends Component {
 																	leacots={leacots} 
 																	dataSource={leacotsList} 
 																	changeData = {this.changeData}
+																	addWhisperConut={this.addWhisperConut}
+																	type="whisper"
+																	rowItem={whisper}
 																/>
                                                             )
                                                         })
