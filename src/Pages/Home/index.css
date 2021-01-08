@@ -43,7 +43,7 @@
 
 /* 文章内容 */
 .content {
-    padding: 100px 0 160px 0;
+    padding: 20px 0;
 }
 .content .cont .title {
     margin-bottom: 60px;
@@ -63,18 +63,38 @@
 }
 /* 列表 */
 .content .cont .list-item .item {
-    margin-bottom: 80px;
-    overflow: hidden;
+	display: flex;
+	flex-direction:row;
+	margin: 20px 0;
+    padding: 20px 0;
+	overflow: hidden;
+	cursor: pointer;
+	border-bottom:1px dashed #ececec;
+	transition: all .5s;
+	border-radius: 5px;
 }
 
+.content .cont .list-item .img-wrap {
+	width:200px;
+	height:100px;
+	overflow: hidden;
+}
+.content .cont .list-item .img-wrap img{
+	width:100%;
+	height:100%;
+}
 .content .cont .list-item .item .item-cont {
+	width: 100%;
     padding-left: 100px;
 }
-.content .cont .list-item .item .item-cont h3 {
-    font-size: 24px;
-    margin: 20px 0;
+.content .cont .list-item .item .item-cont .item-title {
+	widows: 100%;
 }
-.content .cont .list-item .item .item-cont h3 .new-icon {
+.content .cont .list-item .item .item-cont .item-title .item-title-time{
+	float: right;
+	color: #352c2c;
+}
+.content .cont .list-item .item .item-cont .item-title .new-icon {
     width: 36px;
     height: 18px;
     line-height: 18px;
@@ -88,12 +108,15 @@
     color: #ff7f21;
     margin-bottom: 32px;
 }
-.content .cont .list-item .item .item-cont p {
-    line-height: 37px;
-    display: -webkit-box;
+.content .cont .list-item .item .item-cont .item-content {
+	color:#6f6f6f;
+	margin-top:5px;
+	font-size: 13px;
+    line-height: 30px;
+	display: -webkit-box;
+    overflow: hidden;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
-    overflow: hidden;
     -webkit-box-orient: vertical;
 }
 .content .cont .list-item .item .item-cont .go-icon {
@@ -101,5 +124,32 @@
     height: 11px;
     display: block;
     padding: 10px 0;
-    margin-top: 16px;
+	float: right;
+}
+.item-cont .op-list {
+	margin-top:15px;
+	cursor: pointer;
+    color: #999999;
+}
+.item-cont .op-list>span{
+	margin-right: 20px;
+}
+.item-cont .op-list>span>span{
+	margin-right: 5px;
+}
+
+.content .cont .list-item .item:hover {
+	box-shadow: 0px 4px 10px -2px rgba(0, 0, 0, 0.14);
+}
+.content .cont .list-item .item:hover .img-wrap {
+	margin-left:10px;
+	transition: all .5s;
+}
+.content .cont .list-item .item:hover .item-title-time {
+	margin-right:10px;
+	transition: all .5s;
+}
+.content .cont .list-item .item:hover .go-icon {
+	margin-right:10px;
+	transition: all .5s;
 }

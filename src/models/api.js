@@ -2,7 +2,7 @@
  * @Author: houxiaoling 
  * @Date: 2020-07-31 11:55:39 
  * @Last Modified by: houxiaoling
- * @Last Modified time: 2021-01-07 10:30:02
+ * @Last Modified time: 2021-01-08 11:19:16
  */
 import exp from './exp'
 let { AxiosGet, AxiosPost } = exp
@@ -32,7 +32,17 @@ let api = {
 				callback(res)
 			}
 		})
-    },
+	},
+	getArticleByFilter: ( data,callback ) => {
+        let uri = url + '/articles/getArticleByFilter'
+		AxiosPost({
+			url: uri,
+			data: data,
+			reback: (res) => {
+				callback(res)
+			}
+		})
+	},
     getArticleById: ( data,callback ) => {
         let uri = url + '/articles/queryById'
 		AxiosPost({

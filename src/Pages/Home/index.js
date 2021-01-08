@@ -2,10 +2,11 @@
  * @Author: houxiaoling 
  * @Date: 2020-07-31 17:03:24 
  * @Last Modified by: houxiaoling
- * @Last Modified time: 2020-08-25 15:04:17
+ * @Last Modified time: 2021-01-08 18:07:34
  */
 import React, { Component } from 'react'
 import { Tabs, Row, Col, Pagination, Empty  } from 'antd';
+import { TableOutlined, LikeOutlined, HeartOutlined, FundViewOutlined, MessageOutlined, } from '@ant-design/icons';
 import { api } from '../../models/api'
 import './index.css'
 
@@ -15,8 +16,9 @@ export default class Home extends Component {
     constructor(props) {
         super(props)
         this.state = {
+			screenHeight:document.body.offsetHeight,
             articleList:[],
-            articleType:'前端文章',
+            filter:'hot',
             currentPage:1,
             pageSize:5,
             total:0,
@@ -24,13 +26,13 @@ export default class Home extends Component {
     }
 
     componentDidMount() {
-        this.getArticleByType()
+        this.getArticleByFilter()
     }
 
-    /* 根据类型搜索文章 */
-    getArticleByType = () => {
-        const { articleType } = this.state
-        api.getArticleByType({info:JSON.stringify( { type:articleType} )}, res => {
+    /* 根据条件搜索文章 */
+    getArticleByFilter = () => {
+        const { filter } = this.state
+        api.getArticleByFilter({info:JSON.stringify( { filter:filter} )}, res => {
             if (res.code === 200) {
                 this.setState({
                     articleList: res.data,
@@ -43,10 +45,10 @@ export default class Home extends Component {
     /* 文章类型切换 */
     tabChange = (type) => {
         this.setState({
-            articleType: type,
+            filter: type,
             currentPage: 1,
         }, () => {
-            this.getArticleByType()
+            this.getArticleByFilter()
         })
     }
 
@@ -62,7 +64,7 @@ export default class Home extends Component {
         const articles = articleList.slice((currentPage-1)*pageSize,(currentPage-1)*pageSize+pageSize)
         return (
             <div>
-                <div className='banner' style={{background:'url("assets/img/banner.jpg") no-repeat',backgroundSize:'100%'}}>
+                <div className='banner' style={{height:'500px',background:'url("assets/img/banner.jpg") no-repeat',backgroundSize:'100% 100%'}}>
                     <div className='cont w1000'>
                         <div className='title'>
                             <h3>MY<br/>BLOG</h3>
@@ -81,12 +83,11 @@ export default class Home extends Component {
                     </div>
                 </div>
                 <div className='content'>
-                    <div className='cont w1000'>
+                    <div className='cont w1000' style={{minHeight:'380px'}}>
                         <div className='title'>
-                        <Tabs defaultActiveKey="前端文章" onChange={this.tabChange}>
-                            <TabPane tab="前端文章" key="前端文章" />
-                            <TabPane tab="心情随笔" key="心情随笔" />
-                            <TabPane tab="其他文章" key="其他文章" />
+                        <Tabs defaultActiveKey="hot" onChange={this.tabChange}>
+                            <TabPane tab="热门文章" key="hot" />
+                            <TabPane tab="最近文章" key="latest" />
                         </Tabs>
                         </div>
                         <div className='list-item'>
@@ -95,24 +96,35 @@ export default class Home extends Component {
                                     articles.map( article => {
                                         return (
                                             <div className='item' key={article.id}>
-                                                <Row gutter={20}>
-                                                    <Col span={10}>
-                                                        <div className='img'>
-                                                                <img src='assets/img/sy_img1.jpg' />
-                                                        </div>
-                                                    </Col>
-                                                    <Col span={14}>
-                                                        <div className='item-cont'>
-                                                            <h3>
-                                                                {article.title}
-                                                                <button className='layui-btn layui-btn-danger new-icon'>new</button>
-                                                            </h3>
-                                                            <h5>{article.type}</h5>
-                                                            <p>{article.content}</p>
-                                                            <a href='#' className='go-icon' style={{background:'url("assets/img/jiantou.png") center center no-repeat'}}></a>
-                                                        </div>
-                                                    </Col>
-                                                </Row>
+												{/* 图片 */}
+												<div className='img-wrap'>
+													<img src='assets/img/sy_img1.jpg' />
+												</div>
+												{/* 内容 */}
+												<div className='item-cont'>
+													<div className='item-title'>
+														<span style={{fontSize:'24px'}}>{article.title}</span>
+														{/* <button className='layui-btn layui-btn-danger new-icon'>new</button> */}
+														<div className='item-title-time'>{article.time}</div>
+													</div>
+													<div className='item-content'>{article.content}</div>
+													<div className='op-list'>
+														<span className='read'>
+															<FundViewOutlined />
+															<span>{article.read_count}</span>
+														</span>
+														<span className='like'>
+															{/* <LikeOutlined /> */}
+															<HeartOutlined />
+															<span>{article.like_count}</span>
+														</span>
+														<span className='edit'>
+															<MessageOutlined />
+															<span>{article.comment_count}</span>
+														</span>
+														<a href='#' className='go-icon' style={{background:'url("assets/img/jiantou.png") center center no-repeat',}}></a>
+													</div>
+												</div>
                                             </div>
                                         )
                                     })
