@@ -2,16 +2,18 @@
  * @Author: houxiaoling 
  * @Date: 2020-08-06 15:25:58 
  * @Last Modified by: houxiaoling
- * @Last Modified time: 2021-01-07 16:31:22
+ * @Last Modified time: 2021-01-22 17:37:16
  * 文章
  */
 
 import React, { Component } from 'react'
-import Markdown from 'react-markdown';
-import { Menu, Input } from 'antd';
+import { Menu, Input, Empty, Badge  } from 'antd';
+
 import { api } from '../../models/api'
 import { fixIntoTree } from '../../models/utils'
 import './index.css'
+import ArticleDetail from '../../Components/ArticleDetail'
+import Dashboard from '../../Components/Dashboard'
 
 const { SubMenu } = Menu;
 const { Search } = Input;
@@ -21,7 +23,9 @@ export default class Article extends Component {
         super(props)
         this.state = {
             markdown: '',
-            articleType: [],
+			articleType: [],
+			article:{},//当前选中文章
+			leacotsList:[],//留言列表
         }
     }
 
@@ -34,7 +38,6 @@ export default class Article extends Component {
         api.queryArticleClassify({}, res => {
             if (res.data) {
 				const articleType = fixIntoTree(res.data, 0, 'title', 'id', 'children', true);
-				console.log(articleType)
                 this.setState({
                     articleType
                 })
@@ -64,7 +67,8 @@ export default class Article extends Component {
             const content = res.data.length ? res.data[0].content : ''
             if (res.data.length) {
                 this.setState({
-                    markdown: content
+					markdown: content,
+					article:res.data[0],
                 })
             }
 
@@ -72,7 +76,7 @@ export default class Article extends Component {
     }
 
     render() {
-        const { markdown, articleType } = this.state
+        const { markdown, articleType, article, leacotsList } = this.state
         const contentHeight = document.body.offsetHeight - 41
         return (
             <div className='article-content' style={{ height: contentHeight }}>
@@ -96,9 +100,12 @@ export default class Article extends Component {
                     </Menu>
                 </div>
                 <div className='content-main'>
-                    <div className='content-wrap'>
-                        <Markdown className='markdown-body' source={markdown} />
-                    </div>
+					{
+						JSON.stringify(article) != "{}" ? 
+						<ArticleDetail markdown={markdown} leacotsList={leacotsList} article={article}/>
+						: <Dashboard />
+					}
+
                 </div>
             </div>
         )

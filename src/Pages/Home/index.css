@@ -66,12 +66,12 @@
 	display: flex;
 	flex-direction:row;
 	margin: 20px 0;
-    padding: 20px 0;
 	overflow: hidden;
 	cursor: pointer;
 	border-bottom:1px dashed #ececec;
 	transition: all .5s;
 	border-radius: 5px;
+	padding:20px 10px;
 }
 
 .content .cont .list-item .img-wrap {

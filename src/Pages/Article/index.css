@@ -1,20 +1,50 @@
 .slider {
     height:100%;
     width:260px;
-    overflow-y: auto;
+	overflow-y: auto;
+	background-color: #fff;
 }
 
 .article-content {
     display:flex;
-    flex-direction: row;
+	flex-direction: row;
+	background-color: #f4f5f5;
 }
 .content-main {
     height: 100%;
-    width: calc(100% - 300px);
+    width: calc(100% - 250px);
     padding:20px;
     overflow: auto;
 }
-.content-wrap {
-    width: 1000px;
-    height: 100%;
+.article-detail-wrap {
+	position: relative;
+}
+.article-action-wrap {
+	position:absolute;
+	left: 20px;
+	top: 100px;
+	font-size: 20px;
+}
+.article-action-wrap .action-item {
+	width:40px;
+	height:40px;
+	background-color: #fff;
+	line-height:40px;
+	text-align: center;
+	border-radius: 20px;
+	margin-top:10px;
+	cursor:pointer;
+	color:#b2bac2;
+}
+.article-action-wrap .action-item:hover {
+	color:#494e52;
+}
+.detail-wrap {
+	margin-left:100px;
+	width: 70%;
+	padding:20px;
+	background-color: #fff;
+} 
+.review-version {
+	margin-top:100px;
 }
