@@ -2,7 +2,7 @@
  * @Author: houxiaoling 
  * @Date: 2020-10-12 17:15:54 
  * @Last Modified by: houxiaoling
- * @Last Modified time: 2021-01-07 11:01:37
+ * @Last Modified time: 2021-01-26 14:20:20
  * 留言组件 
  */
 import React, { Component } from 'react'
@@ -80,6 +80,8 @@ export default class CommentEditor extends Component {
 					this.props.changeDataSource(dataSource)
 					if (this.state.type == 'whisper') {
 						this.updateWhisper()
+					} else if (this.state.type == 'article') {
+						this.updateArticle()
 					}
 					message.success("留言成功！")
 					this.clearEditor()
@@ -111,6 +113,8 @@ export default class CommentEditor extends Component {
 					this.props.changeDataSource(dataSource)
 					if (this.state.type == 'whisper') {
 						this.updateWhisper()
+					} else if (this.state.type == 'article') {
+						this.updateArticle()
 					}
 					message.success("留言成功！")
 					this.clearEditor()
@@ -126,6 +130,15 @@ export default class CommentEditor extends Component {
 		param.comment_count = param.comment_count + 1
 		api.updateWhisper({info:JSON.stringify(param)}, res => {
 			this.props.addWhisperConut(this.state.rowItem.id)
+		})
+	}
+
+	// 更新文章
+	updateArticle= () => {
+		let param = JSON.parse(JSON.stringify(this.state.rowItem))
+		param.comment_count = param.comment_count + 1
+		api.updateArticle({info:JSON.stringify(param)}, res => {
+			this.props.addArticleCount(this.state.rowItem.id)
 		})
 	}
 

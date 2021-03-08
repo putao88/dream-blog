@@ -2,7 +2,7 @@
  * @Author: houxiaoling 
  * @Date: 2020-07-31 11:55:39 
  * @Last Modified by: houxiaoling
- * @Last Modified time: 2021-01-08 11:19:16
+ * @Last Modified time: 2021-01-26 14:21:03
  */
 import exp from './exp'
 let { AxiosGet, AxiosPost } = exp
@@ -45,6 +45,16 @@ let api = {
 	},
     getArticleById: ( data,callback ) => {
         let uri = url + '/articles/queryById'
+		AxiosPost({
+			url: uri,
+			data: data,
+			reback: (res) => {
+				callback(res)
+			}
+		})
+	},
+	updateArticle: ( data,callback ) => {
+        let uri = url + '/articles/updateArticle'
 		AxiosPost({
 			url: uri,
 			data: data,

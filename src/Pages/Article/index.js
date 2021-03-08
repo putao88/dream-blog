@@ -2,18 +2,22 @@
  * @Author: houxiaoling 
  * @Date: 2020-08-06 15:25:58 
  * @Last Modified by: houxiaoling
- * @Last Modified time: 2021-01-22 17:37:16
+ * @Last Modified time: 2021-01-26 14:45:05
  * 文章
  */
 
 import React, { Component } from 'react'
 import { Menu, Input, Empty, Badge  } from 'antd';
+import { HeartOutlined, FundViewOutlined, MessageOutlined, } from '@ant-design/icons';
+
 
 import { api } from '../../models/api'
 import { fixIntoTree } from '../../models/utils'
 import './index.css'
 import ArticleDetail from '../../Components/ArticleDetail'
 import Dashboard from '../../Components/Dashboard'
+import { formateLeacots } from '../../models/utils'
+
 
 const { SubMenu } = Menu;
 const { Search } = Input;
@@ -63,17 +67,31 @@ export default class Article extends Component {
     }
 
     handleClick = (e) => {
+		//获取文章详情
         api.getArticleById({ info: JSON.stringify({ id: e.key }) }, res => {
             const content = res.data.length ? res.data[0].content : ''
             if (res.data.length) {
                 this.setState({
 					markdown: content,
 					article:res.data[0],
+				})
+				this.getLeacotsByParentId(res.data[0].id)
+            }
+		});
+
+	}
+	
+	//获取文章评论
+	getLeacotsByParentId = (father_id) => {
+		api.getLeacotsByParentId({ info: JSON.stringify({ father_id: father_id  }) }, res => {
+            if (res.code === 200) {
+				let data = formateLeacots(res.data)
+                this.setState({
+                    leacotsList: data,
                 })
             }
-
-        });
-    }
+        })
+	}
 
     render() {
         const { markdown, articleType, article, leacotsList } = this.state

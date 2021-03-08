@@ -2,7 +2,7 @@
  * @Author: houxiaoling 
  * @Date: 2020-09-25 17:56:13 
  * @Last Modified by: houxiaoling
- * @Last Modified time: 2021-01-07 11:00:35
+ * @Last Modified time: 2021-01-26 15:38:21
  * 留言组件 
  */
 
@@ -28,6 +28,10 @@ export default class Comments extends Component {
         }
     }
 
+	//点赞
+	addLikeCount = (id) => {
+
+	}
     //展示回复框
     showReply = (id) => {
         const allCommentData = this.props.dataSource
@@ -100,6 +104,7 @@ export default class Comments extends Component {
                                 parentId={leacots.id}
 								changeDataSource={this.changeDataSource}
 								addWhisperConut={this.props.addWhisperConut}
+								addArticleCount={this.props.addArticleCount}
 								type={type}
 								rowItem={rowItem}
                             />
@@ -140,7 +145,7 @@ export default class Comments extends Component {
                                         <div className='action-wrap'>
                                             <div className='data'>{item.time}</div>
                                             <div className='action-box'>
-                                                <span><LikeOutlined /> {item.like}</span>
+                                                <span onClick={()=> this.addLikeCount(item.id)}><LikeOutlined /> {item.like}</span>
                                                 <span onClick={()=> this.showReply(item.id)}><MessageOutlined />  回复</span>
                                             </div>
                                         </div>
